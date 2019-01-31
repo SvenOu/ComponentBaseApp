@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 上次漏填 -->
+    <string name="home">Home</string>
+    <string name="back">Back</string>
+
+    <string name="app_name">Church\'s</string>
+
+    <string name="copyRight">V%1$s Copyright © NextX.</string>
+
+    <string name="myChurchs">My Church\'s</string>
+
+    <!-- new String -->
+    <!-- Zip Code Input Dialog -->
+
+    <!-- NewRegisterModeActivity -->
+
+    <string name="register">Register</string>
+    <string name="feedback">Feedback</string>
+    <string name="rewards">Rewards</string>
+    <string name="savings">Savings</string>
+    <string name="menu">Menu</string>
+    <string name="locations">Location</string>
+    <string name="photo_filter">Photo Filter</string>
+    <string name="music">Music</string>
+    <!-- powered by-->
+    <string name="powered_by">Powered by</string>
+    <!--    <string name="chicken_bliss"> chicken bliss!</string>-->
+    <string name="pressBackExit">Press Back again to exit</string>
+
+    <string name="termsTitle">TERMS AND CONDITIONS</string>
+    <string name="desline">Decline</string>
+	<string name="agree">Agree</string>
+
+    <string name="permission_storage_request"><b>This app does not have access to storage</b>.\n \nYou can allow phone in Settings -> Apps -> Church\'s to use Church\'s features.</string>
+
+    <!--tag your receipt-->
+
+    <!--<string name="time_required">Time is required.</string>-->
+
+    <!--<string name="treat_is_home_store">Would love to treat you special \n IS THIS YOUR HOME STORE?</string>-->
+
+    <string name="p_ok">Enable Now</string>
+    <string name="p_no">Cancel</string>
+</resources>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- demo-->
+    <color name="white_10">#19ffffff</color>
+    <color name="white_op5">#7fffffff</color>
+    <color name="c2_2_90">#e6f3ebdd</color>
+    <color name="c1_1">#e71a1c</color>
+    <color name="c1_1_50">#7fe71a1c</color>
+    <color name="c2_1">#fcb91d</color>
+    <color name="c2_2">#f3ebdd</color>
+    <color name="c3_1">#202020</color>
+    <color name="c3_2">#e5202020</color>
+    <color name="c3_4">#4c202020</color>
+    <color name="c3_6">#303438</color>
+    <color name="c3_7">#444444</color>
+    <color name="c4_1">#ffffff</color>
+    <!-- demo-->
+
+</resources>

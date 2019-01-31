@@ -1,0 +1,6 @@
+<resources>
+    <array name="mybatis_array">
+        <item>@xml/config_general_dao</item>
+        <item>@xml/user_account_dao</item>
+    </array>
+</resources>

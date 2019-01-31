@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sql version="1">
+	<statement>
+		CREATE TABLE conf_general
+		(
+		param_name TEXT,
+		param_value TEXT,
+		param_desc TEXT,
+		update_time DATETIME,
+		CONSTRAINT PK_app_config PRIMARY KEY (param_name)
+		);
+	</statement>
+
+	<statement>
+		CREATE TABLE user_account
+		(
+		user_id TEXT NOT NULL,
+		first_name TEXT,
+		last_name TEXT,
+		gender TEXT,
+		age INTEGER,
+		birthdate DATETIME,
+		create_date DATETIME,
+		verify_date DATETIME,
+		email TEXT,
+		phone TEXT,
+		password TEXT,
+		register_date DATETIME,
+		zipcode TEXT,
+		language_code INTEGER,
+		status TEXT,
+		stars INTEGER,
+		CONSTRAINT PK_user_id PRIMARY KEY (user_id)
+		);
+	</statement>
+
+
+	<statement>
+		INSERT INTO conf_general(param_name, param_value, param_desc,update_time) values ('DB_VERSION','1','version of structure and library',CURRENT_TIMESTAMP);
+	</statement>
+</sql>

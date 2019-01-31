@@ -1,0 +1,6 @@
+include ":lib_tts_android",
+        ":lib_android_universal_image_loader",
+        ":lib_common",
+        ":module_security",
+        ":module_guest",
+        ':module_application'

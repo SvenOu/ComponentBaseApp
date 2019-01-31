@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--此工具以数组的长度作为当前最高版本，sql必须以1作为最低版本-->
+    <array name="db_change_array">
+        <item>@raw/dbchg_1</item>
+    </array>
+</resources>

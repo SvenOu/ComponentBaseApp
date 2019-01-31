@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:ignore="MissingPrefix">
+
+    <RelativeLayout
+        android:id="@+id/rl_savings"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@color/c3_6"
+        android:paddingTop="@dimen/text_padding"
+        android:paddingBottom="@dimen/text_padding"
+        android:layout_weight="1">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@null"
+            android:layout_centerInParent="true"
+            app:srcCompat="@drawable/icon_savings" />
+
+        <com.sv.common.widget.CycleCountView
+            android:id="@+id/coupon_count_view"
+            android:layout_width="@dimen/coupon_count_icon_width"
+            android:layout_height="@dimen/coupon_count_icon_height"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true" />
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/iv_feedback"
+        android:paddingTop="@dimen/text_padding"
+        android:paddingBottom="@dimen/text_padding"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:contentDescription="@null"
+        android:background="@color/c3_1"
+        app:srcCompat="@drawable/icon_feedback" />
+
+    <RelativeLayout
+        android:id="@+id/rl_rewards"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@color/c2_2"
+        android:paddingTop="@dimen/text_padding"
+        android:paddingBottom="@dimen/text_padding"
+        android:layout_weight="1">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@null"
+            android:layout_centerInParent="true"
+            app:srcCompat="@drawable/icon_rewards" />
+
+        <com.sv.common.widget.CycleCountView
+            android:id="@+id/rewards_count_view"
+            android:layout_width="@dimen/coupon_count_icon_width"
+            android:layout_height="@dimen/coupon_count_icon_height"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true" />
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/iv_location"
+        android:paddingTop="@dimen/text_padding"
+        android:paddingBottom="@dimen/text_padding"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:contentDescription="@null"
+        android:background="@color/c3_6"
+        app:srcCompat="@drawable/icon_locations" />
+
+    <ImageView
+        android:id="@+id/iv_music"
+        android:paddingTop="@dimen/text_padding"
+        android:paddingBottom="@dimen/text_padding"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:contentDescription="@null"
+        android:background="@color/c3_1"
+        app:srcCompat="@drawable/icon_music" />
+</LinearLayout>

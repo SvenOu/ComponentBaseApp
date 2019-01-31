@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/header_bar"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/menu_top_height"
+    android:background="@android:color/transparent"
+    tools:ignore="MissingPrefix">
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:gravity="center_vertical|left">
+
+        <Button
+            android:id="@+id/top_slide_menu_icon"
+            fontPath="@string/font_family_3"
+            android:layout_width="@dimen/top_icon_width"
+            android:layout_height="@dimen/top_icon_height"
+            android:layout_marginLeft="@dimen/normal_padding_margin"
+            android:background="@drawable/icon_sidemenu_selector" />
+
+        <LinearLayout
+            android:id="@+id/ll_top_left"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:visibility="gone">
+
+            <Button
+                android:id="@+id/btn_top_left_icon"
+                fontPath="@string/font_family_3"
+                android:layout_width="@dimen/top_icon_width"
+                android:layout_height="@dimen/top_icon_height"
+                android:layout_marginLeft="@dimen/top_normal_margin"
+                android:layout_marginRight="@dimen/top_normal_margin"
+                android:background="@drawable/icon_back_selector"
+                android:clickable="false" />
+
+            <TextView
+                android:id="@+id/tv_top_left_label"
+                fontPath="@string/font_family_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/top_normal_margin"
+                android:layout_marginRight="@dimen/top_normal_margin"
+                android:text="@string/back"
+                android:textColor="@color/red_color_selector"
+                android:textSize="@dimen/f6" />
+        </LinearLayout>
+    </LinearLayout>
+
+
+    <ImageView
+        android:id="@+id/iv_logo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:contentDescription="@null"
+        app:srcCompat="@drawable/image_logo_nav" />
+
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:gravity="center_vertical|right">
+
+        <Button
+            android:id="@+id/btn_top_right_icon"
+            fontPath="@string/font_family_3"
+            android:layout_width="@dimen/top_icon_width"
+            android:layout_height="@dimen/top_icon_height"
+            android:layout_marginLeft="@dimen/top_normal_margin"
+            android:layout_marginRight="@dimen/normal_padding_margin"
+            android:background="@drawable/to_right_btn_selector"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/tv_top_right_label"
+            fontPath="@string/font_family_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/top_normal_margin"
+            android:layout_marginRight="@dimen/top_normal_margin"
+            android:clickable="true"
+            android:gravity="center"
+            android:minWidth="@dimen/top_righr_label_min_width"
+            android:padding="@dimen/text_padding"
+            android:text="Español"
+            android:textColor="@color/red_color_selector"
+            android:textSize="@dimen/f6" />
+    </LinearLayout>
+</LinearLayout>

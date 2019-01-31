@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mapper namespace="com.nextxnow.httpwww.proxytest.trans_coupon.TransCouponsDao">
+
+
+    <insert id="insert" parameter_type="TransCoupon">
+        insert into trans_coupons (lib_coupon_id,version_id,language_code,desc1,desc2,desc3)
+        values(#{libCouponId},#{versionId},#{languageCode},#{desc1},#{desc2},#{desc3})
+    </insert>
+    <!--如果需要insert所有的field，只需要加入table_for_change_all-->
+    <insert id="insert2" parameter_type="TransCoupon"  table_for_change_all = "trans_coupons"/>
+
+    <update id="update" parameter_type="TransCoupon" >
+        update trans_coupons set desc1=#{desc1},desc2=#{desc2},desc3=#{desc3} where lib_coupon_id=#{libCouponId} and version_id=#{versionId} and language_code=#{languageCode}
+    </update>
+    <!--如果需要update所有的field，只需要加入table_for_change_all 和写where条件-->
+    <update id="update2" parameter_type="TransCoupon" table_for_change_all = "trans_coupons">
+         lib_coupon_id=#{libCouponId} and version_id=#{versionId} and language_code=#{languageCode}
+    </update>
+
+    <!--如果需要update部分的的field，只需要用ContentValues和写where条件-->
+    <update id="update3" parameter_type="ContentValues" table_for_change_all = "trans_coupons">
+         lib_coupon_id=#{libCouponId} and version_id=#{versionId} and language_code=#{languageCode}
+    </update>
+
+    <select id="find" parameter_type="String, String">
+        SELECT lib_coupon_id, version_id, language_code, desc1, desc2, desc3 FROM trans_coupons WHERE desc1 = ? AND desc2 = ?
+    </select>
+
+    <select id="find2" parameter_type="String, String">
+        SELECT * FROM trans_coupons WHERE desc1 = ? AND desc2 = ?
+    </select>
+
+
+    <delete id="delete" parameter_type="String, String, String">
+        delete from trans_coupons where lib_coupon_id=? and version_id=? and language_code=?
+    </delete>
+
+</mapper>

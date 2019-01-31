@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.tts.guest">
+
+    <!--敏感权限-->
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" /> <!-- GCM requires a Google account. -->
+    <uses-permission
+        android:name="android.permission.RECORD_AUDIO"
+        tools:node="remove" />
+    <!--end 敏感权限-->
+
+    <uses-feature android:name="android.hardware.camera" />
+    <uses-feature android:name="android.hardware.camera.autofocus" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" /> <!-- Keeps the processor from sleeping when a message is received. -->
+
+    <supports-screens
+        android:anyDensity="true"
+        android:largeScreens="true"
+        android:normalScreens="true"
+        android:resizeable="true"
+        android:smallScreens="true"
+        android:xlargeScreens="true" />
+
+    <application>
+
+        <activity
+            android:name=".main.view.MainViewActivity"
+            android:label="@string/myChurchs"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"/>
+
+        <!-- for UMENG -->
+        <meta-data
+            android:name="UMENG_APPKEY"
+            android:value="${UMENG_APP_KEY}" />
+
+        <meta-data
+            android:name="UMENG_CHANNEL"
+            android:value="${UMENG_CHANNEL}" />
+        <!--end for UMENG -->
+    </application>
+</manifest>

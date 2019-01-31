@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <item type="id" name="music_play_view"/>
+
+   <!--对应asset里面的字体文件-->
+   <string name="font_family_1" translatable="false">fonts/Futura_Bold.ttf</string>
+   <string name="font_family_2" translatable="false">fonts/Archer_Bold_Pro.otf</string>
+   <string name="font_family_3" translatable="false">fonts/Archer_Semibold_Pro.otf</string>
+   <string name="font_family_4" translatable="false">fonts/Archer_Medium_Pro.otf</string>
+   <string name="font_family_5" translatable="false">fonts/Sport_Script.ttf</string>
+   <!--<string name="font_archer_mediumital_pro" translatable="false">fonts/Archer_MediumItal_Pro.otf</string>-->
+
+</resources>

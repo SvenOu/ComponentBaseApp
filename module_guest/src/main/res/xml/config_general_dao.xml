@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mapper namespace="com.tts.guest.main.dao.ConfGeneralDao">
+
+    <insert id="insert" parameter_type="ConfGeneral"  table_for_change_all = "conf_general"/>
+
+    <update id="update" parameter_type="ConfGeneral" table_for_change_all = "conf_general">
+        param_name=#{paramName}
+    </update>
+
+    <update id="updateFields" parameter_type="ContentValues" table_for_change_all = "conf_general">
+        param_name=#{paramName}
+    </update>
+
+    <select id="find" parameter_type="String">
+        SELECT * FROM conf_general WHERE param_name=?
+    </select>
+
+    <delete id="delete" parameter_type="String">
+        DELETE from conf_general WHERE param_name=?
+    </delete>
+
+</mapper>

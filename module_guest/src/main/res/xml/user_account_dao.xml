@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mapper namespace="com.tts.guest.main.dao.UserAccountDao">
+
+<!--
+   INSERT INTO user_account (user_id, first_name, last_name, gender, age, birthdate, create_date, verify_date, email, phone, password, register_date, zipcode, language_code, status, stars)
+    VALUES (:userId, :firstName, :lastName, :gender, :age, :birthdate, :createDate, :verifyDate, :email, :phone, :password, :registerdate, :zipcode, :languageCode, :status, :stars)
+    -->
+
+<!--
+UPDATE user_account SET
+    first_name=:firstName, last_name=:lastName, gender=:gender, age=:age, birthdate=:birthdate, create_date=:createDate, verify_date=:verifyDate, email=:email, phone=:phone, password=:password, register_date=:registerDate, zipcode=:zipcode, language_code=:languageCode, status=:status, stars=:stars
+    WHERE user_id=:userId
+    -->
+
+    <insert id="insert" parameter_type="UserAccount"  table_for_change_all = "user_account"/>
+
+    <update id="update" parameter_type="UserAccount" table_for_change_all = "user_account">
+        user_id=#{userId}
+    </update>
+
+    <update id="updateFields" parameter_type="ContentValues" table_for_change_all = "user_account">
+        user_id=#{userId}
+    </update>
+
+    <select id="find" parameter_type="String">
+        SELECT * FROM user_account WHERE user_id=?
+    </select>
+
+    <delete id="delete" parameter_type="String">
+        DELETE from user_account WHERE user_id=?
+    </delete>
+
+</mapper>

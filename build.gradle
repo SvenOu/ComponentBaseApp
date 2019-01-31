@@ -1,0 +1,135 @@
+buildscript {
+    ext {
+        buildVars = [
+                compileSdkVersion: 28,
+                buildToolsVersion: '28.0.3',
+                minSdkVersion    : 19,
+                targetSdkVersion : 28
+        ]
+        gmsPlayServiceLocation = 'com.google.android.gms:play-services-location:16.0.0'
+        gmsPlayServiceAnalytics = 'com.google.android.gms:play-services-analytics:16.0.4'
+        androidSupportAppcompat = 'com.android.support:appcompat-v7:28.0.0'
+        androidSupportDesign = 'com.android.support:design:28.0.0'
+        androidSupportRecycleView = 'com.android.support:recyclerview-v7:28.0.0'
+        androidSupportCardView = 'com.android.support:cardview-v7:28.0.0'
+        androidSupportAnnotations = 'com.android.support:support-annotations:28.0.0'
+        androidSupportConstraintLayout = 'com.android.support.constraint:constraint-layout:1.1.3'
+        umengAnalytics = 'com.umeng.analytics:analytics:6.1.4'
+        gson = 'com.google.code.gson:gson:2.4'
+        fastJson = 'com.alibaba:fastjson:1.2.48'
+        twitterAndroidSDK = 'com.twitter.sdk.android:twitter:3.3.0@aar'
+        permissionUtils = 'com.github.kayvannj:PermissionUtils:1.0.3'
+        httpclientAndroid = 'org.apache.httpcomponents:httpclient-android:4.3.5.1'
+
+        multidex = 'com.android.support:multidex:1.0.3'
+        calligraphy = 'uk.co.chrisjenx:calligraphy:2.3.0'
+        jacksonCore = 'com.fasterxml.jackson.core:jackson-core:2.9.7'
+        jacksonAnnotations = 'com.fasterxml.jackson.core:jackson-annotations:2.9.7'
+        jacksonDatabind = 'com.fasterxml.jackson.core:jackson-databind:2.9.7'
+        androidRestTemplate = 'org.springframework.android:spring-android-rest-template:2.0.0.M4'
+
+        butterknife = 'com.jakewharton:butterknife:9.0.0'
+        butterknifCompiler = 'com.jakewharton:butterknife-compiler:9.0.0'
+
+        arouterApi = 'com.alibaba:arouter-api:1.4.1'
+        arouterCompiler = 'com.alibaba:arouter-compiler:1.2.2'
+
+        //新版FaceBook SDk需要
+        boltsAndroid = 'com.parse.bolts:bolts-android:1.2.1'
+    }
+    repositories {
+        maven { url "https://maven.aliyun.com/repository/google"}
+        maven { url "https://maven.aliyun.com/repository/public"}
+        maven { url "https://maven.aliyun.com/repository/gradle-plugin"}
+        maven { url "https://maven.aliyun.com/repository/spring-plugin"}
+
+        mavenLocal()
+        google()
+        mavenCentral()
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.2.1'
+        classpath 'com.google.gms:google-services:4.2.0'
+        classpath 'com.neenbedankt.gradle.plugins:android-apt:1.8'
+        classpath "com.alibaba:arouter-register:1.0.2"
+        classpath 'com.jakewharton:butterknife-gradle-plugin:9.0.0'
+    }
+}
+
+allprojects {
+    repositories {
+        maven { url "https://maven.aliyun.com/repository/google"}
+        maven { url "https://maven.aliyun.com/repository/public"}
+        maven { url "https://jitpack.io" }
+        maven { url "http://mvn.gt.igexin.com/nexus/content/repositories/releases/" }
+        maven { url 'https://repo.spring.io/libs-snapshot'}
+
+        mavenLocal()
+        mavenCentral()
+        google()
+        jcenter()
+    }
+}
+subprojects {
+    apply plugin: 'com.alibaba.arouter'
+    apply plugin: 'com.jakewharton.butterknife'
+    afterEvaluate {
+        if (getPlugins().hasPlugin('android') ||
+                getPlugins().hasPlugin('android-library')) {
+            android {
+                lintOptions {
+                    checkReleaseBuilds false
+                    // Or, if you prefer, you can continue to check for errors in release builds,
+                    // but continue the build even when errors are found:
+                    abortOnError false
+                }
+            }
+        }
+        android {
+            defaultConfig {
+                javaCompileOptions {
+                    annotationProcessorOptions {
+                        arguments = [AROUTER_MODULE_NAME: project.getName(), AROUTER_GENERATE_DOC: "enable"]
+                    }
+                }
+                buildConfigField 'String', 'MODULE_NAME', '\"'+ project.name + '\"'
+            }
+            packagingOptions {
+                exclude 'META-INF/notice.txt'
+                exclude 'META-INF/license.txt'
+                exclude 'META-INF/LICENSE'
+            }
+            compileOptions {
+                sourceCompatibility JavaVersion.VERSION_1_8
+                targetCompatibility JavaVersion.VERSION_1_8
+            }
+            // This is handled for you by the 2.0+ Gradle Plugin
+            aaptOptions {
+                additionalParameters "--no-version-vectors"
+            }
+            dexOptions {
+                javaMaxHeapSize "8g"
+            }
+        }
+        dependencies {
+            //butterknife
+            implementation "${butterknife}"
+            annotationProcessor "${butterknifCompiler}"
+
+            //Arouter
+            api "${arouterApi}"
+            annotationProcessor "${arouterCompiler}"
+            api "${fastJson}"
+
+            //用于测试的依赖
+            testImplementation 'junit:junit:4.12'
+            androidTestImplementation 'com.android.support.test:runner:1.0.2'
+            androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+        }
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}

@@ -1,0 +1,20 @@
+<resources>
+    <!-- demo -->
+    <dimen name="menu_top_height">58dp</dimen>
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="red_btn_height">48dp</dimen>
+    <dimen name="user_avatar_icon_width">85dp</dimen>
+    <dimen name="user_avatar_icon_height">85dp</dimen>
+    <dimen name="coupon_count_icon_height">25dp</dimen>
+    <dimen name="coupon_count_icon_width">25dp</dimen>
+    <dimen name="title_left_right_padding">12dp</dimen>
+    <dimen name="top_icon_width">24dp</dimen>
+    <dimen name="top_icon_height">24dp</dimen>
+    <dimen name="top_normal_margin">4dp</dimen>
+    <dimen name="text_padding">5dp</dimen>
+    <dimen name="normal_padding_margin">10dp</dimen>
+    <dimen name="top_righr_label_min_width">53dp</dimen>
+    <dimen name="avartar_image_padding">5dp</dimen>
+    <!-- demo -->
+
+</resources>

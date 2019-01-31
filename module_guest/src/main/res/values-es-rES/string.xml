@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Church\'s</string>
+
+    <string name="copyRight">V%1$s Copyright © NextX.</string>
+
+    <!-- start -->
+
+    <!-- end -->
+
+    <string name="back">Volver</string>
+
+    <string name="home">Inició</string>
+
+    <string name="myChurchs">Mi Church\'s</string>
+
+    <!-- new String -->
+ 	<!-- Zip Code Input Dialog -->
+
+    <!-- NewRegisterModeActivity -->
+
+    <string name="register">Inscribirse</string>
+    <string name="feedback">Evaluaciones</string>
+    <string name="rewards">Recompensas</string>
+    <string name="savings">Ahorros</string>
+    <string name="menu">Menú</string>
+    <string name="locations">Ubicaciónes</string>
+    <string name="photo_filter">Filtros para fotografías</string>
+    <string name="music">Música</string>
+    <!-- replace to spalash -->
+    <string name="powered_by">Powered by</string>
+    <!--    <string name="chicken_bliss"> pollo gratis!</string>-->
+    <string name="pressBackExit">Press Back again to exit</string>
+
+    <string name="termsTitle">Terms And Conditions</string>
+	<string name="desline">Decline</string>
+	<string name="agree">Agree</string>
+
+    <string name="permission_storage_request"><b>This app does not have access to storage</b>.\n \nYou can allow phone in Settings -> Apps -> Church\'s to use Church\'s features.</string>
+
+    <!--tag your receipt-->
+
+    <!--<string name="time_required">Time is required.</string>-->
+
+    <!--<string name="treat_is_home_store">Would love to treat you special \n IS THIS YOUR HOME STORE?</string>-->
+
+</resources>
