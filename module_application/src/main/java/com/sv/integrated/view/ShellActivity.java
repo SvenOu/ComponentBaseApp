@@ -18,6 +18,7 @@ public class ShellActivity extends AppCompatActivity {
             @Override
             public void run() {
                 ARouter.getInstance().build("/module_security/view/SecurityActivity").navigation();
+                ShellActivity.this.finish();
             }
         },250);
     }
