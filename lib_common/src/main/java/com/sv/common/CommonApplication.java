@@ -8,6 +8,8 @@ import android.support.v7.app.AppCompatDelegate;
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.sv.common.util.Logger;
 
+import uk.co.chrisjenx.calligraphy.CalligraphyConfig;
+
 public class CommonApplication extends Application {
     private static final String TAG = CommonApplication.class.getSimpleName();
     private static CommonApplication instance;
@@ -25,7 +27,15 @@ public class CommonApplication extends Application {
     public void onCreate() {
         super.onCreate();
         instance = this;
+        initFonts();
         initArouter();
+    }
+
+    private void initFonts() {
+        //初始化字体
+        CalligraphyConfig.initDefault(new CalligraphyConfig.Builder()
+                .setFontAttrId(R.attr.fontPath)
+                .build());
     }
 
     private void initArouter() {
