@@ -28,11 +28,14 @@ public class AppLaunchFragment extends AbstractBaseFragment {
     }
 
     private void init() {
+        showLoadingDialog();
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
+                cancelLoadingDialog();
                 switchFragmentByMenuData(BaseMenuData.newInstance(
-                    SecurityMenuData.REGISTER_MODE.getValue(), RegisterModeFragment.class));
+                        SecurityMenuData.REGISTER_MODE.getValue(), RegisterModeFragment.class)
+                        .setAddToBackStack(false));
             }
         },250);
     }

@@ -3,6 +3,7 @@ package com.sv.common.screen_navigation;
 import com.sv.common.AbstractBaseFragment;
 
 public class BaseMenuData {
+    private boolean addToBackStack = true;
     private String key;
     private Class<? extends AbstractBaseFragment> fragmentClass;
 
@@ -23,6 +24,15 @@ public class BaseMenuData {
         this.fragmentClass = fragmentClass;
     }
 
+    public boolean isAddToBackStack() {
+        return addToBackStack;
+    }
+
+    public BaseMenuData setAddToBackStack(boolean addToBackStack) {
+        this.addToBackStack = addToBackStack;
+        return this;
+    }
+
     public String getKey() {
         return key;
     }
@@ -34,7 +44,8 @@ public class BaseMenuData {
     @Override
     public String toString() {
         return "BaseMenuData{" +
-                "key='" + key + '\'' +
+                "addToBackStack=" + addToBackStack +
+                ", key='" + key + '\'' +
                 ", fragmentClass=" + fragmentClass +
                 '}';
     }

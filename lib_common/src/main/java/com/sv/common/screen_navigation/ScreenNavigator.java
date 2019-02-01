@@ -137,7 +137,9 @@ public class ScreenNavigator {
             if(!this.fragmentManager.popBackStackImmediate(null, FragmentManager.POP_BACK_STACK_INCLUSIVE)
                     || this.fragmentManager.getBackStackEntryCount() == 0){
                 fragmentTransaction.replace(fragmentContainerId, targetFragment, key);
-                fragmentTransaction.addToBackStack(key);
+                if(targetMenuData.isAddToBackStack()){
+                    fragmentTransaction.addToBackStack(key);
+                }
                 baseFragmentActivity.setActivityCommonListener(targetFragment);
             };
         }else{
@@ -147,7 +149,9 @@ public class ScreenNavigator {
             boolean hasPoppedBackStack = this.fragmentManager.popBackStackImmediate(key, 0);
             if(!hasPoppedBackStack && (null == cacheFragment)){
                 fragmentTransaction.replace(fragmentContainerId, targetFragment, key);
-                fragmentTransaction.addToBackStack(key);
+                if(targetMenuData.isAddToBackStack()) {
+                    fragmentTransaction.addToBackStack(key);
+                }
                 baseFragmentActivity.setActivityCommonListener(targetFragment);
             }
         }

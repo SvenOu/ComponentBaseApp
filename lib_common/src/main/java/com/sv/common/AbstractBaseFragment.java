@@ -11,6 +11,8 @@ import com.github.kayvannj.permission_utils.Func;
 import com.sv.common.screen_navigation.ActivityCommonListener;
 import com.sv.common.screen_navigation.BaseMenuData;
 
+import java.util.Objects;
+
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
@@ -85,6 +87,9 @@ public abstract class AbstractBaseFragment extends Fragment implements ActivityC
         return null;
     }
 
+    protected void popBackScreen() {
+        ((AbstractBaseFragmentActivity) Objects.requireNonNull(this.getActivity())).screenNavigator.popBackScreen();
+    }
     protected void showToast(int resId) {
         if(null != getActivity()){
             Toast.makeText(getActivity(), resId, Toast.LENGTH_SHORT).show();

@@ -12,14 +12,14 @@
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1"
-        android:gravity="center_vertical|left">
+        android:gravity="center_vertical|start">
 
         <Button
             android:id="@+id/top_slide_menu_icon"
             fontPath="@string/font_family_3"
             android:layout_width="@dimen/top_icon_width"
             android:layout_height="@dimen/top_icon_height"
-            android:layout_marginLeft="@dimen/normal_padding_margin"
+            android:layout_marginStart="@dimen/normal_padding_margin"
             android:background="@drawable/icon_sidemenu_selector" />
 
         <LinearLayout
@@ -66,15 +66,15 @@
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1"
-        android:gravity="center_vertical|right">
+        android:gravity="center_vertical|end">
 
         <Button
             android:id="@+id/btn_top_right_icon"
             fontPath="@string/font_family_3"
             android:layout_width="@dimen/top_icon_width"
             android:layout_height="@dimen/top_icon_height"
-            android:layout_marginLeft="@dimen/top_normal_margin"
-            android:layout_marginRight="@dimen/normal_padding_margin"
+            android:layout_marginStart="@dimen/top_normal_margin"
+            android:layout_marginEnd="@dimen/normal_padding_margin"
             android:background="@drawable/to_right_btn_selector"
             android:visibility="gone" />
 
@@ -85,11 +85,12 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/top_normal_margin"
             android:layout_marginRight="@dimen/top_normal_margin"
+            android:focusable="true"
             android:clickable="true"
             android:gravity="center"
             android:minWidth="@dimen/top_righr_label_min_width"
             android:padding="@dimen/text_padding"
-            android:text="Español"
+            android:text="right_label"
             android:textColor="@color/red_color_selector"
             android:textSize="@dimen/f6" />
     </LinearLayout>

@@ -36,7 +36,7 @@ public class TermsFragment extends AbstractBaseFragment {
     public void onViewClicked(View view) {
         int i = view.getId();
         if (i == R.id.btn_decline) {
-            Logger.d(TAG, "-------btn_decline-------");
+            popBackScreen();
         } else if (i == R.id.btn_agree) {
             Logger.d(TAG, "-------btn_agree-------");
         }
