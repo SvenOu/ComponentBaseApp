@@ -27,13 +27,13 @@ public class GuestAppModule {
     private Application application;
     private Config config;
 
-    protected void init(Application application) {
+    public void init(Application application) {
         this.application = application;
         this.config = GuestContext.getInstance().getConfig();
-        onCreate();
+        initModule();
     }
 
-    public void onCreate() {
+    private void initModule() {
 
         initImageLoader();
 
@@ -73,7 +73,6 @@ public class GuestAppModule {
         if (Config.isDevelopMode()) {
             builder.writeDebugLogs(); // Remove for release app
         }
-
         ImageLoaderConfiguration config = builder.build();
         ImageLoader loader = ImageLoader.getInstance();
         loader.init(config);

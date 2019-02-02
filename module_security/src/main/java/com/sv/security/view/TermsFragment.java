@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.sv.common.AbstractBaseFragment;
 import com.sv.common.util.Logger;
 import com.sv.security.R;
@@ -38,7 +39,8 @@ public class TermsFragment extends AbstractBaseFragment {
         if (i == R.id.btn_decline) {
             popBackScreen();
         } else if (i == R.id.btn_agree) {
-            Logger.d(TAG, "-------btn_agree-------");
+            ARouter.getInstance().build("/module_guest/main/MainViewActivity").navigation();
+            getActivity().finish();
         }
     }
 }

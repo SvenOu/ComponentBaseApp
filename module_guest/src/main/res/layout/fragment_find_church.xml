@@ -7,9 +7,14 @@
     android:orientation="vertical"
     tools:ignore="MissingPrefix">
 
-    <Button
-        android:id="@+id/btn1"
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Fragment find align"/>
+        android:text="FindAlignmentFragment"/>
+
+    <Button
+        android:id="@+id/btn_go_aligment_result"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="go_aligment_result"/>
 </LinearLayout>

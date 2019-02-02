@@ -171,13 +171,14 @@ public class ScreenNavigator {
     }
 
     //后退到上一个screen
-    public void popBackScreen(){
+    public boolean popBackScreen(){
         if(this.historyStack.size() <= 1){
             Logger.e(TAG, "historyStack size is less than 1, not allow pop.");
-            return;
+            return false;
         }
         BaseMenuData curBaseMenuData = this.historyStack.elementAt(this.historyStack.size()  - 2);
         switchScreenByMenuData(curBaseMenuData);
+        return true;
     }
 
     //出栈

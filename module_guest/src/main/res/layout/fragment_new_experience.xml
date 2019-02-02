@@ -6,10 +6,14 @@
     android:orientation="vertical"
     tools:ignore="MissingPrefix">
 
-
-    <Button
-        android:id="@+id/btn1"
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="fragment new experience"/>
+        android:text="NewExperienceFragment"/>
+
+    <Button
+        android:id="@+id/btn_go_experience_detail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="go experience detail"/>
 </LinearLayout>

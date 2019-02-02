@@ -11,10 +11,9 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/text_padding" />
 
-    <com.tts.guest.main.view.menu.MenuWebView
-        android:id="@+id/mwb_churchs"
+    <com.tts.guest.common.view.GuestWebView
+        android:id="@+id/webview_menu"
         android:layout_width="match_parent"
         android:layout_weight="1"
         android:layout_height="0dp" />
-
 </LinearLayout>

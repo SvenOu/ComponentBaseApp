@@ -12,8 +12,8 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/text_padding" />
 
-    <com.tts.guest.main.view.music.MusicWebView
-        android:id="@+id/mwb_churchs"
+    <com.tts.guest.common.view.GuestWebView
+        android:id="@+id/webview_music"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 

@@ -124,6 +124,15 @@ public abstract class AbstractBaseFragmentActivity extends AppCompatActivity {
 		executeSwitchFragmentTasks();
 	}
 
+	@Override
+	public void onBackPressed() {
+		if(!screenNavigator.popBackScreen()){
+//			super.onBackPressed();
+			// TODO: 2019/2/2  
+			finish();
+		}
+	}
+
 	public void showLoadingDialog() {
 		iniDialog();
 		try {

@@ -17,7 +17,8 @@ public class ShellActivity extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                ARouter.getInstance().build("/module_security/view/SecurityActivity").navigation();
+//                ARouter.getInstance().build("/module_security/view/SecurityActivity").navigation();
+                ARouter.getInstance().build("/module_guest/main/MainViewActivity").navigation();
                 ShellActivity.this.finish();
             }
         },250);

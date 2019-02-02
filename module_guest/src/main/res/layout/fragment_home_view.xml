@@ -8,8 +8,8 @@
     android:orientation="vertical"
     tools:ignore="MissingPrefix">
 
-    <Button
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="fragment home"/>
+        android:text="HomeFragment"/>
 </LinearLayout>
