@@ -1,3 +1,4 @@
+include ':lib_theme'
 include ":lib_tts_android",
         ":lib_android_universal_image_loader",
         ":lib_common",

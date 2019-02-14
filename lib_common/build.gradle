@@ -42,4 +42,5 @@ dependencies {
 
     api project(':lib_android_universal_image_loader')
     api project(':lib_tts_android')
+    api project(':lib_theme')
 }
