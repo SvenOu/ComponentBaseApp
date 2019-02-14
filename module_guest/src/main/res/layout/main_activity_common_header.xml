@@ -89,7 +89,7 @@
             android:clickable="true"
             android:gravity="center"
             android:minWidth="@dimen/top_righr_label_min_width"
-            android:padding="@dimen/text_padding"
+            android:padding="@dimen/normal_text_padding"
             android:text="right_label"
             android:textColor="@color/red_color_selector"
             android:textSize="@dimen/f6" />

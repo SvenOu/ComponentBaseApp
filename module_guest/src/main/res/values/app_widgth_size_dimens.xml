@@ -11,8 +11,6 @@
     <dimen name="top_icon_width">24dp</dimen>
     <dimen name="top_icon_height">24dp</dimen>
     <dimen name="top_normal_margin">4dp</dimen>
-    <dimen name="text_padding">5dp</dimen>
-    <dimen name="normal_padding_margin">10dp</dimen>
     <dimen name="top_righr_label_min_width">53dp</dimen>
     <dimen name="avartar_image_padding">5dp</dimen>
     <!-- demo -->

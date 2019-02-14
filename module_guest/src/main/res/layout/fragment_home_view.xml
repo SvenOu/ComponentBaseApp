@@ -11,5 +11,6 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        style="@style/TEXT.TEXT_RED.FONT_FAMILY_5.F9"
         android:text="HomeFragment"/>
 </LinearLayout>

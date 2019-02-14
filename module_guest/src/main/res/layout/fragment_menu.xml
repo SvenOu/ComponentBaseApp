@@ -9,7 +9,7 @@
         style="?android:attr/progressBarStyleHorizontal"
         android:max="100"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/text_padding" />
+        android:layout_height="@dimen/normal_text_padding" />
 
     <com.tts.guest.common.view.GuestWebView
         android:id="@+id/webview_menu"
