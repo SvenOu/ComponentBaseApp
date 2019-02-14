@@ -36819,9 +36819,4 @@
         <item name="android:textSize">@dimen/f13</item>
         <item name="android:textAllCaps">true</item>
     </style>
-    
-    
-    
-    
-    
 </resources>
