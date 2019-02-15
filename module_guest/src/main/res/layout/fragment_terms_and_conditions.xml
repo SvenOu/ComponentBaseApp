@@ -34,7 +34,8 @@
 
         <Button
             android:id="@+id/btn_decline"
-            style="@style/BUTTON.RECTANGLE.ASSERTIVE.TEXT_WHITE.FONT_FAMILY_1.F7.UPPER_CASE"
+            style="@style/BUTTON.RECTANGLE.ASSERTIVE.TEXT_WHITE.FONT_FAMILY_1.UPPER_CASE"
+            android:textSize="@dimen/f7"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:gravity="center"
@@ -42,7 +43,8 @@
 
         <Button
             android:id="@+id/btn_agree"
-            style="@style/BUTTON.RECTANGLE.STABLE.TEXT_DARK.FONT_FAMILY_1.F7.UPPER_CASE"
+            style="@style/BUTTON.RECTANGLE.STABLE.TEXT_DARK.FONT_FAMILY_1.UPPER_CASE"
+            android:textSize="@dimen/f7"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:width="0dp"
