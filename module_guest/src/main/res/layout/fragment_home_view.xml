@@ -17,7 +17,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        style="@style/BUTTON.RECTANGLE_CORNER.BALANCED.TEXT_DARK.FONT_FAMILY_2.UPPER_CASE"
+        style="@style/BUTTON.RECTANGLE.BALANCED.TEXT_DARK.FONT_FAMILY_2.UPPER_CASE"
         android:onClick="onViewClicked"
-        android:text="呵呵"/>
+        android:text="ahaha"/>
 </LinearLayout>
