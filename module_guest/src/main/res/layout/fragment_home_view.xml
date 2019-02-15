@@ -13,4 +13,11 @@
         android:layout_height="wrap_content"
         style="@style/TEXT.TEXT_RED.FONT_FAMILY_5.F9"
         android:text="HomeFragment"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/BUTTON.RECTANGLE_CORNER.BALANCED.TEXT_DARK.FONT_FAMILY_2.UPPER_CASE"
+        android:onClick="onViewClicked"
+        android:text="呵呵"/>
 </LinearLayout>
