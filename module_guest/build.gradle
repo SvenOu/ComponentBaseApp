@@ -52,8 +52,8 @@ android {
     buildToolsVersion "${buildVars.buildToolsVersion}"
     useLibrary 'org.apache.http.legacy'
     defaultConfig {
-        versionCode props['app.versionCode'].toInteger()
-        versionName props['app.versionName']
+        versionCode 1
+        versionName "1.0"
         minSdkVersion "${buildVars.minSdkVersion}".toInteger()
         targetSdkVersion "${buildVars.targetSdkVersion}".toInteger()
 

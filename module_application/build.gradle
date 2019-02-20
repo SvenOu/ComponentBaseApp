@@ -55,8 +55,8 @@ android {
         applicationId  props['app.PACKAGE_NAME']
         minSdkVersion "${buildVars.minSdkVersion}".toInteger()
         targetSdkVersion "${buildVars.targetSdkVersion}".toInteger()
-        versionCode 1
-        versionName "1.0"
+        versionCode props['app.versionCode'].toInteger()
+        versionName props['app.versionName']
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         multiDexEnabled true
     }
