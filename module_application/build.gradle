@@ -4,7 +4,7 @@ dependencies {
     api fileTree(dir: 'libs', include: ['*.jar'])
     api project(':module_security')
     api project(':module_guest')
-    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
+    api "${androidSupportConstraintLayout}"
 }
 android {
     println "---开始加载module_application配置文件---"
