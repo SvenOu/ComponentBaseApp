@@ -6,71 +6,43 @@ dependencies {
 }
 
 android {
-    println "---开始加载配置文件---"
-    def Properties props = new Properties()
-    def propFile = file('build_guest_module.properties')
-    if (propFile.canRead()) {
-        props.load(new FileInputStream(propFile))
-        println "------versionCode: " + props['app.versionCode']
-        println "------versionName: " + props['app.versionName']
-        println "------isDevelopMode: " + props['app.isDevelopMode']
-        println "------currentMode: " + props['app.currentMode']
-        println "------PRINT_LOG: " + props['app.PRINT_LOG']
-        println "------PACKAGE_NAME: " + props['app.PACKAGE_NAME']
-        println "------DATA_BASE_NAME: " + props['app.DATA_BASE_NAME']
-        println "------FILE_PROVIDE: " + props['app.FILE_PROVIDE']
-        println "------SUPPORT_LANGUAGES: " + props['app.SUPPORT_LANGUAGES']
-        println "------DEV_MODE: " + props['app.DEV_MODE']
-        println "------TEST_MODE: " + props['app.TEST_MODE']
-        println "------PROD_MODE: " + props['app.PROD_MODE']
-        println "------KEY_ALIAS: " + props['app.KEY_ALIAS']
-        println "------KEY_PASSWORD: " + props['app.KEY_PASSWORD']
-        println "------STORE_FILE: " + props['app.STORE_FILE']
-        println "------STORE_PASSWORD: " + props['app.STORE_PASSWORD']
-        println "------UMENG_APP_KEY: " + props['UMENG_APP_KEY']
-        println "------UMENG_CHANNEL: " + props['UMENG_CHANNEL']
-        println "------FACEBOOK_APP_ID: " + props['FACEBOOK_APP_ID']
-        println "------FABRIC_APIKEY: " + props['FABRIC_APIKEY']
-    } else {
-        println "---读取配置文件错误---"
-    }
-    println "---加载配置文件完成---"
-    def fileProvide = props['FACEBOOK_APP_ID']+props['app.FILE_PROVIDE']
+    println "---开始加载module_guest配置文件---"
+    def fileProvide = props['app.FACEBOOK_APP_ID']+props['app.FILE_PROVIDE']
     def testManifestPlaceholders = [
-            UMENG_APP_KEY   : props['UMENG_APP_KEY'],
-            UMENG_CHANNEL   : props['UMENG_CHANNEL'],
-            FACEBOOK_APP_ID : props['FACEBOOK_APP_ID'],
-            FABRIC_APIKEY   : props['FABRIC_APIKEY'],
+            UMENG_APP_KEY   : props['app.UMENG_APP_KEY'],
+            UMENG_CHANNEL   : props['app.UMENG_CHANNEL'],
+            FACEBOOK_APP_ID : props['app.FACEBOOK_APP_ID'],
+            FABRIC_APIKEY   : props['app.FABRIC_APIKEY'],
             //for test
-            GETUI_APP_ID    : props['TEST_GETUI_APP_ID'],
-            GETUI_APP_KEY   : props['TEST_GETUI_APP_KEY'],
-            GETUI_APP_SECRET: props['TEST_GETUI_APP_SECRET'],
+            GETUI_APP_ID    : props['app.TEST_GETUI_APP_ID'],
+            GETUI_APP_KEY   : props['app.TEST_GETUI_APP_KEY'],
+            GETUI_APP_SECRET: props['app.TEST_GETUI_APP_SECRET'],
 
             PACKAGE_NAME    : props['app.PACKAGE_NAME'],
             FILE_PROVIDE    : fileProvide
     ]
     def proManifestPlaceholders = [
-            UMENG_APP_KEY   : props['UMENG_APP_KEY'],
-            UMENG_CHANNEL   : props['UMENG_CHANNEL'],
-            FACEBOOK_APP_ID : props['FACEBOOK_APP_ID'],
-            FABRIC_APIKEY   : props['FABRIC_APIKEY'],
+            UMENG_APP_KEY   : props['app.UMENG_APP_KEY'],
+            UMENG_CHANNEL   : props['app.UMENG_CHANNEL'],
+            FACEBOOK_APP_ID : props['app.FACEBOOK_APP_ID'],
+            FABRIC_APIKEY   : props['app.FABRIC_APIKEY'],
             //for pro
-            GETUI_APP_ID    : props['PRO_GETUI_APP_ID'],
-            GETUI_APP_KEY   : props['PRO_GETUI_APP_KEY'],
-            GETUI_APP_SECRET: props['PRO_GETUI_APP_SECRET'],
+            GETUI_APP_ID    : props['app.PRO_GETUI_APP_ID'],
+            GETUI_APP_KEY   : props['app.PRO_GETUI_APP_KEY'],
+            GETUI_APP_SECRET: props['app.PRO_GETUI_APP_SECRET'],
 
             PACKAGE_NAME    : props['app.PACKAGE_NAME'],
             FILE_PROVIDE    : fileProvide
     ]
     def localManifestPlaceholders = [
-            UMENG_APP_KEY   : props['UMENG_APP_KEY'],
-            UMENG_CHANNEL   : props['UMENG_CHANNEL'],
-            FACEBOOK_APP_ID : props['FACEBOOK_APP_ID'],
-            FABRIC_APIKEY   : props['FABRIC_APIKEY'],
+            UMENG_APP_KEY   : props['app.UMENG_APP_KEY'],
+            UMENG_CHANNEL   : props['app.UMENG_CHANNEL'],
+            FACEBOOK_APP_ID : props['app.FACEBOOK_APP_ID'],
+            FABRIC_APIKEY   : props['app.FABRIC_APIKEY'],
             //for dev
-            GETUI_APP_ID    : props['DEV_GETUI_APP_ID'],
-            GETUI_APP_KEY   : props['DEV_GETUI_APP_KEY'],
-            GETUI_APP_SECRET: props['DEV_GETUI_APP_SECRET'],
+            GETUI_APP_ID    : props['app.DEV_GETUI_APP_ID'],
+            GETUI_APP_KEY   : props['app.DEV_GETUI_APP_KEY'],
+            GETUI_APP_SECRET: props['app.DEV_GETUI_APP_SECRET'],
 
             PACKAGE_NAME    : props['app.PACKAGE_NAME'],
             FILE_PROVIDE    : fileProvide
@@ -80,9 +52,6 @@ android {
     buildToolsVersion "${buildVars.buildToolsVersion}"
     useLibrary 'org.apache.http.legacy'
     defaultConfig {
-        // 通过正则表达式去掉逗号前后的空格
-        resConfigs props['app.SUPPORT_LANGUAGES'].split("\\s*,\\s*")
-//        applicationId props['app.PACKAGE_NAME']
         versionCode props['app.versionCode'].toInteger()
         versionName props['app.versionName']
         minSdkVersion "${buildVars.minSdkVersion}".toInteger()
@@ -92,41 +61,40 @@ android {
         if (props['app.currentMode'] == props['app.TEST_MODE']) {
             println "-------------------- " + props['app.TEST_MODE'] + "---------------------------"
             manifestPlaceholders = testManifestPlaceholders
-            println "----------------GETUI_APP_ID---------" + props['TEST_GETUI_APP_ID'] + "------------------"
-            println "----------------GETUI_APP_KEY---------" + props['TEST_GETUI_APP_KEY'] + "------------------"
-            println "----------------GETUI_APP_SECRET---------" + props['TEST_GETUI_APP_SECRET'] + "------------------"
+            println "----------------GETUI_APP_ID---------" + props['app.TEST_GETUI_APP_ID'] + "------------------"
+            println "----------------GETUI_APP_KEY---------" + props['app.TEST_GETUI_APP_KEY'] + "------------------"
+            println "----------------GETUI_APP_SECRET---------" + props['app.TEST_GETUI_APP_SECRET'] + "------------------"
 
         } else if (props['app.currentMode'] == props['app.PROD_MODE']) {
             println "-------------------- " + props['app.PROD_MODE'] + "---------------------------"
             manifestPlaceholders = proManifestPlaceholders
-            println "----------------GETUI_APP_ID---------" + props['PRO_GETUI_APP_ID'] + "------------------"
-            println "----------------GETUI_APP_KEY---------" + props['PRO_GETUI_APP_KEY'] + "------------------"
-            println "----------------GETUI_APP_SECRET---------" + props['PRO_GETUI_APP_SECRET'] + "------------------"
+            println "----------------GETUI_APP_ID---------" + props['app.PRO_GETUI_APP_ID'] + "------------------"
+            println "----------------GETUI_APP_KEY---------" + props['app.PRO_GETUI_APP_KEY'] + "------------------"
+            println "----------------GETUI_APP_SECRET---------" + props['app.PRO_GETUI_APP_SECRET'] + "------------------"
 
         } else {
             println "-------------------- " + props['app.DEV_MODE'] + "---------------------------"
             manifestPlaceholders = localManifestPlaceholders
-            println "----------------GETUI_APP_ID---------" + props['DEV_GETUI_APP_ID'] + "------------------"
-            println "----------------GETUI_APP_KEY---------" + props['DEV_GETUI_APP_KEY'] + "------------------"
-            println "----------------GETUI_APP_SECRET---------" + props['DEV_GETUI_APP_SECRET'] + "------------------"
+            println "----------------GETUI_APP_ID---------" + props['app.DEV_GETUI_APP_ID'] + "------------------"
+            println "----------------GETUI_APP_KEY---------" + props['app.DEV_GETUI_APP_KEY'] + "------------------"
+            println "----------------GETUI_APP_SECRET---------" + props['app.DEV_GETUI_APP_SECRET'] + "------------------"
         }
 
         //Java代码中用BuildConfig.GOOGLE_MAP_APP_ID 调用key的值
-        buildConfigField 'String', 'GOOGLE_MAP_APP_ID', props['GOOGLE_MAP_APP_ID']
+        buildConfigField 'String', 'GOOGLE_MAP_APP_ID', props['app.GOOGLE_MAP_APP_ID']
         //GCM Config sender id.
 //        buildConfigField 'String', 'GCM_SENDER_ID', '"145857549498"'
 
         buildConfigField 'String', 'CURRENT_MODE', props['app.currentMode']
-        buildConfigField 'Boolean', 'IS_DEVELOP_MODE', props['app.isDevelopMode']
         buildConfigField 'String', 'DEV_MODE', props['app.DEV_MODE']
         buildConfigField 'String', 'TEST_MODE', props['app.TEST_MODE']
         buildConfigField 'String', 'PROD_MODE', props['app.PROD_MODE']
         buildConfigField 'Boolean', 'PRINT_LOG', props['app.PRINT_LOG']
         buildConfigField 'String', 'DATA_BASE_NAME', '"'+props['app.DATA_BASE_NAME']+'"'
         buildConfigField 'String', 'FILE_PROVIDE', '"'+fileProvide+'"'
-        buildConfigField 'String', 'AVATAR_CLIENT_ID', props['AVATAR_CLIENT_ID']
-        buildConfigField 'String', 'AVATAR_PASSWORD', props['AVATAR_PASSWORD']
-        buildConfigField 'String', 'FACEBOOK_APP_ID_JAVA', '"'+props['FACEBOOK_APP_ID']+'"'
+        buildConfigField 'String', 'AVATAR_CLIENT_ID', props['app.AVATAR_CLIENT_ID']
+        buildConfigField 'String', 'AVATAR_PASSWORD', props['app.AVATAR_PASSWORD']
+        buildConfigField 'String', 'FACEBOOK_APP_ID_JAVA', '"'+props['app.FACEBOOK_APP_ID']+'"'
 
         generatedDensities = []//for vector
         vectorDrawables.useSupportLibrary = true

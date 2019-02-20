@@ -33,15 +33,6 @@ public class GuestAppModule {
         //内部存储空间/data/data/packagename/files
         config.setBaseImageRoot(application.getFilesDir());
 
-        PackageInfo pInfo = null;
-        try {
-            pInfo = application.getPackageManager().getPackageInfo(application.getPackageName(), 0);
-            config.setAppVersion(pInfo.versionName);
-            config.setAppVersionNumber(pInfo.versionCode);
-        } catch (NameNotFoundException e) {
-            e.printStackTrace();
-        }
-
         File extStgDir = Environment.getExternalStorageDirectory();
         Logger.i(TAG, "ExternalStorageDirectory: " + extStgDir.getAbsolutePath());
 

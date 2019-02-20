@@ -55,6 +55,48 @@ buildscript {
         classpath "com.alibaba:arouter-register:1.0.2"
         classpath 'com.jakewharton:butterknife-gradle-plugin:9.0.0'
     }
+
+    println "---开始加载根配置文件---"
+    Properties props = new Properties()
+    rootProject.ext.set("props", props)
+    def propFile = file('build_application.properties')
+    if (propFile.canRead()) {
+        props.load(new FileInputStream(propFile))
+        println "------currentMode: " + props['app.currentMode']
+        println "------aRouterDebugMode: " + props['app.aRouterDebugMode']
+        println "------versionCode: " + props['app.versionCode']
+        println "------versionName: " + props['app.versionName']
+        println "------DEV_MODE: " + props['app.DEV_MODE']
+        println "------TEST_MODE: " + props['app.TEST_MODE']
+        println "------PROD_MODE: " + props['app.PROD_MODE']
+        println "------PRINT_LOG: " + props['app.PRINT_LOG']
+        println "------PACKAGE_NAME: " + props['app.PACKAGE_NAME']
+        println "------DATA_BASE_NAME: " + props['app.DATA_BASE_NAME']
+        println "------FILE_PROVIDE: " + props['app.FILE_PROVIDE']
+        println "------KEY_ALIAS: " + props['app.KEY_ALIAS']
+        println "------KEY_PASSWORD: " + props['app.KEY_PASSWORD']
+        println "------STORE_FILE: " + props['app.STORE_FILE']
+        println "------STORE_PASSWORD: " + props['app.STORE_PASSWORD']
+        println "------UMENG_APP_KEY: " + props['app.UMENG_APP_KEY']
+        println "------UMENG_CHANNEL: " + props['app.UMENG_CHANNEL']
+        println "------FACEBOOK_APP_ID: " + props['app.FACEBOOK_APP_ID']
+        println "------FABRIC_APIKEY: " + props['app.FABRIC_APIKEY']
+        println "------GOOGLE_MAP_APP_ID: " + props['app.GOOGLE_MAP_APP_ID']
+        println "------TEST_GETUI_APP_ID: " + props['app.TEST_GETUI_APP_ID']
+        println "------TEST_GETUI_APP_KEY: " + props['app.TEST_GETUI_APP_KEY']
+        println "------TEST_GETUI_APP_SECRET: " + props['app.TEST_GETUI_APP_SECRET']
+        println "------PRO_GETUI_APP_ID: " + props['app.PRO_GETUI_APP_ID']
+        println "------PRO_GETUI_APP_KEY: " + props['app.PRO_GETUI_APP_KEY']
+        println "------PRO_GETUI_APP_SECRET: " + props['app.PRO_GETUI_APP_SECRET']
+        println "------DEV_GETUI_APP_ID: " + props['app.DEV_GETUI_APP_ID']
+        println "------DEV_GETUI_APP_KEY: " + props['app.DEV_GETUI_APP_KEY']
+        println "------DEV_GETUI_APP_SECRET: " + props['app.DEV_GETUI_APP_SECRET']
+        println "------AVATAR_CLIENT_ID: " + props['app.AVATAR_CLIENT_ID']
+        println "------AVATAR_PASSWORD: " + props['app.AVATAR_PASSWORD']
+    } else {
+        println "---读取配置文件错误---"
+    }
+    println "---加载配置文件完成---"
 }
 
 allprojects {
@@ -72,6 +114,7 @@ allprojects {
     }
 }
 subprojects {
+    Properties props = rootProject.ext.get("props");
     apply plugin: 'com.alibaba.arouter'
     apply plugin: 'com.jakewharton.butterknife'
     afterEvaluate {
