@@ -18,17 +18,10 @@ import java.util.Map;
 /**
  * @author sven-ou
  * 抽象的 view holder 适配器
- * 必须作为 setOnItemClickListener 实例，
- * 才能回掉单选或多选接口
+ * 配合 CheckedLinelayout 实现单选或多选
  */
-public abstract class AbstractSimpleListBaseAdapter<T> extends BaseAdapter implements AdapterView.OnItemClickListener {
+public abstract class AbstractSimpleListBaseAdapter<T> extends BaseAdapter{
     private static final String TAG = AbstractSimpleListBaseAdapter.class.getSimpleName();
-
-    //单选
-    public static final int CHOICE_MODE_SINGLE = 1;
-    //多选
-    public static final int CHOICE_MODE_MUTI = 2;
-    private int choiceMode = CHOICE_MODE_SINGLE;
 
     private Context context;
     private List<T> data = new ArrayList<>();
@@ -84,41 +77,11 @@ public abstract class AbstractSimpleListBaseAdapter<T> extends BaseAdapter imple
         }else{
             viewHolder = (Map) convertView.getTag();
         }
+        viewHolder.put("position",  position);
         onBindView(itemData, viewHolder, convertView, position);
         // 处理新生成不可见的点击
         onConvertViewSelect(convertView, null != selectStatus.get(position) && selectStatus.get(position),  null, -1);
         return convertView;
-    }
-
-
-    @Override
-    public void onItemClick(AdapterView<?> parent,
-                            View curClickView,
-                            int position,
-                            long rowId) {
-
-        //部分view不可见，所以必须先重置
-        if(choiceMode == CHOICE_MODE_SINGLE){
-            for (Map.Entry<Integer, Boolean> entry : selectStatus.entrySet()) {
-                entry.setValue(false);
-            }
-        }
-        // 处理可见的点击
-        for (int i = 0; i < parent.getChildCount(); i++) {
-            View convertView = parent.getChildAt(i);
-            if(choiceMode == CHOICE_MODE_SINGLE){
-                if(curClickView == convertView){
-                    selectStatus.put(position, true);
-                    onConvertViewSelect(convertView, true,  getItem(position), position);
-                }else {
-                    onConvertViewSelect(convertView, false,  null, -1);
-                }
-            }else if(choiceMode == CHOICE_MODE_MUTI){
-                boolean select  = !(null != selectStatus.get(position) && selectStatus.get(position));
-                selectStatus.put(position, select);
-                onConvertViewSelect(curClickView, select,  getItem(position), position);
-            }
-        }
     }
 
     /**
@@ -132,16 +95,6 @@ public abstract class AbstractSimpleListBaseAdapter<T> extends BaseAdapter imple
     protected static class ViewBinder{
          public int itemId = -1;
          public String[] elementIds;
-    }
-
-    public void setSelect(int index, boolean select){
-        selectStatus.put(index, select);
-        for (Map.Entry<Integer, Boolean> entry : selectStatus.entrySet()) {
-            if(choiceMode == CHOICE_MODE_SINGLE && index != entry.getKey()){
-                entry.setValue(false);
-            }
-        }
-        notifyDataSetChanged();
     }
 
     public Context getContext() {
@@ -166,13 +119,5 @@ public abstract class AbstractSimpleListBaseAdapter<T> extends BaseAdapter imple
 
     public void setViewBinder(ViewBinder viewBinder) {
         this.viewBinder = viewBinder;
-    }
-
-    public int getChoiceMode() {
-        return choiceMode;
-    }
-
-    public void setChoiceMode(int choiceMode) {
-        this.choiceMode = choiceMode;
     }
 }

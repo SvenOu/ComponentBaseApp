@@ -24,8 +24,6 @@ public class HomeFragment extends BaseFragment {
         initView();
     }
 
-
-
     private void initView() {
 
     }

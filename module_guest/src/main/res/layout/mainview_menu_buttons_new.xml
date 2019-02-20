@@ -22,7 +22,7 @@
             android:layout_centerInParent="true"
             app:srcCompat="@drawable/icon_savings" />
 
-        <com.sv.common.widget.CycleCountView
+        <com.sv.common.widget.CycleTextView
             android:id="@+id/coupon_count_view"
             android:layout_width="@dimen/coupon_count_icon_width"
             android:layout_height="@dimen/coupon_count_icon_height"
@@ -58,7 +58,7 @@
             android:layout_centerInParent="true"
             app:srcCompat="@drawable/icon_rewards" />
 
-        <com.sv.common.widget.CycleCountView
+        <com.sv.common.widget.CycleTextView
             android:id="@+id/rewards_count_view"
             android:layout_width="@dimen/coupon_count_icon_width"
             android:layout_height="@dimen/coupon_count_icon_height"

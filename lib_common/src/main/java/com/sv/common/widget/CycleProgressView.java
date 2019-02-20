@@ -2,13 +2,12 @@ package com.sv.common.widget;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.res.TypedArray;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.RectF;
-import android.os.Build;
 import android.support.annotation.Nullable;
-import android.support.annotation.RequiresApi;
-import android.support.v4.content.ContextCompat;
 import android.util.AttributeSet;
 import android.view.View;
 
@@ -20,38 +19,56 @@ import com.sv.common.R;
 
 public class CycleProgressView extends View {
 
-    private int strokeWidth = 20;//dp
-    private int progressColor = R.color.progress_color;
-    private int unProgressColor = R.color.un_progress_color;
-
-    private Paint paint;
-    private float value = 100f;
+    /**
+     * 进度环的宽度
+     */
+    private float strokeWidth = 10f;
+    /**
+     * 进度环已填颜色
+     */
+    private int progressColor = Color.RED;
+    /**
+     * 进度环未填颜色
+     */
+    private int unProgressColor = Color.YELLOW;
+    /**
+     * 值
+     */
+    private float value = 0f;
+    /**
+     * 最大值
+     */
     private float maxValue = 100f;
-
-    private int rotate = 90;
-
+    /**
+     * 进度起点旋转角度
+     */
+    private float rotate = 0f;
+    private Paint paint;
     public CycleProgressView(Context context) {
         super(context);
-        init();
+        init(null, 0);
     }
 
     public CycleProgressView(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
-        init();
+        init(attrs, 0);
     }
 
     public CycleProgressView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        init();
+        init(attrs, defStyleAttr);
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
-    public CycleProgressView(Context context, @Nullable AttributeSet attrs, int defStyleAttr, int defStyleRes) {
-        super(context, attrs, defStyleAttr, defStyleRes);
-        init();
-    }
+    private void init(AttributeSet attrs, int defStyle) {
+        final TypedArray a = getContext().obtainStyledAttributes(
+                attrs, R.styleable.CycleProgressView, defStyle, 0);
 
-    private void init() {
+        strokeWidth = a.getDimension(R.styleable.CycleProgressView_strokeWidth, strokeWidth);
+        progressColor = a.getColor(R.styleable.CycleProgressView_progressColor, progressColor);
+        unProgressColor = a.getColor(R.styleable.CycleProgressView_unProgressColor, unProgressColor);
+        rotate = a.getFloat(R.styleable.CycleProgressView_rotate, rotate);
+        value = a.getFloat(R.styleable.CycleProgressView_value, value);
+        maxValue = a.getFloat(R.styleable.CycleProgressView_maxValue, maxValue);
     }
 
     @SuppressLint("DrawAllocation")
@@ -80,12 +97,12 @@ public class CycleProgressView extends View {
         }
 
         // progress
-        paint.setColor(ContextCompat.getColor(getContext(), progressColor));
+        paint.setColor(progressColor);
         canvas.drawArc(rectfHead, rotate, drawValue, false, paint);
 
         //un progress
         if(drawValue < 360){
-            paint.setColor(ContextCompat.getColor(getContext(), unProgressColor));
+            paint.setColor(unProgressColor);
             canvas.drawArc(rectfHead, drawValue + rotate -1, 362 - drawValue, false, paint);
         }
     }
@@ -98,38 +115,13 @@ public class CycleProgressView extends View {
 		return (int) (dipValue * scale + 0.5f);
 	}
 
-
-    // get and set method
-    public int getStrokeWidth() {
-        return strokeWidth;
-    }
-
-    public void setStrokeWidth(int strokeWidth) {
-        this.strokeWidth = strokeWidth;
-    }
-
-    public int getProgressColor() {
-        return progressColor;
-    }
-
-    public void setProgressColor(int progressColor) {
-        this.progressColor = progressColor;
-    }
-
-    public int getUnProgressColor() {
-        return unProgressColor;
-    }
-
-    public void setUnProgressColor(int unProgressColor) {
-        this.unProgressColor = unProgressColor;
-    }
-
     public float getValue() {
         return value;
     }
 
     public void setValue(float value) {
         this.value = value;
+        invalidate();
     }
 
     public float getMaxValue() {
@@ -138,13 +130,6 @@ public class CycleProgressView extends View {
 
     public void setMaxValue(float maxValue) {
         this.maxValue = maxValue;
-    }
-
-    public int getRotate() {
-        return rotate;
-    }
-
-    public void setRotate(int rotate) {
-        this.rotate = rotate;
+        invalidate();
     }
 }

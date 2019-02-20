@@ -10,7 +10,7 @@
 
     <TextView
         android:id="@+id/menu_title"
-        style="@style/TEXT.TEXT_RED.FONT_FAMILY_1.F9"
+        style="@style/TEXT.TEXT_RED.COLOR_DEFAULT.FONT_FAMILY_1.F9"
         android:layout_width="0dp"
         android:layout_height="33dp"
         android:layout_toLeftOf="@+id/menu_icon"

@@ -87,7 +87,6 @@ android {
         versionName props['app.versionName']
         minSdkVersion "${buildVars.minSdkVersion}".toInteger()
         targetSdkVersion "${buildVars.targetSdkVersion}".toInteger()
-        multiDexEnabled true
 
         //AndroidManifext.xml中的占位符的值，使用：android:value="${UMENG_APP_KEY}"
         if (props['app.currentMode'] == props['app.TEST_MODE']) {

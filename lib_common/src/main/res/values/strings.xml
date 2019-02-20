@@ -1,3 +1,4 @@
 <resources>
-    <!--<string name="app_name">Common</string>-->
+    <string name="test_wiget_fragment">testWigetFragment</string>
+    <string name="test_list_fragment">testListFragment</string>
 </resources>

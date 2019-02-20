@@ -1,26 +1,33 @@
 package com.sv.common.widget;
-
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.content.Context;
+import android.content.res.TypedArray;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.Build;
+import android.support.v4.content.ContextCompat;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 
 import com.sv.common.R;
+import com.sv.common.util.Logger;
 import com.sv.common.util.UIUtils;
 
+import java.util.Map;
 
+/**
+ * @author sven-ou
+ */
 public class ReactiveRatingBar extends View {
-
     private static final String TAG = ReactiveRatingBar.class.getSimpleName();
-
-    private final int lightStarResourceId = R.drawable.image_star_light;
-    private final int darkStarResourceId = R.drawable.image_star_dark;
-
+//    private Drawable lightStar = R.drawable.image_star_light;
+//    private Drawable darkStar = R.drawable.image_star_dark;
+    private Drawable lightStar;
+    private Drawable darkStar;
     /**
      * 自动计算星星高度，宽度，间隔
      */
@@ -32,19 +39,19 @@ public class ReactiveRatingBar extends View {
     /**
      * 星星之间最大间隔
      */
-    private int maxStarSpace = 50;
+    private float maxStarSpace = 50;
     /**
      * 星星与顶部或者底部的间隔
      */
-    private int topBottomSpace = 0;
+    private float topBottomSpace = 0;
     /**
      * 星星的宽度
      */
-    private int starWidth = 100;
+    private float starWidth = 100;
     /**
      * 星星高度
      */
-    private int starHeight = 100;
+    private float starHeight = 100;
     /**
      * 星星分数（高亮星星数）
      */
@@ -57,50 +64,76 @@ public class ReactiveRatingBar extends View {
 
     public ReactiveRatingBar(Context context) {
         super(context);
+        init(null, 0);
     }
 
     public ReactiveRatingBar(Context context, AttributeSet attrs) {
         super(context, attrs);
+        init(attrs, 0);
     }
 
     public ReactiveRatingBar(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
+        init(attrs, defStyleAttr);
     }
-
-    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
-    public ReactiveRatingBar(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
-        super(context, attrs, defStyleAttr, defStyleRes);
+    private void init(AttributeSet attrs, int defStyle) {
+        final TypedArray a = getContext().obtainStyledAttributes(attrs, R.styleable.ReactiveRatingBar, defStyle, 0);
+        if (a.hasValue(R.styleable.ReactiveRatingBar_lightStar)) {
+            final int drawableResId = a.getResourceId(R.styleable.ReactiveRatingBar_lightStar, -1);
+            lightStar = ContextCompat.getDrawable(getContext(), drawableResId);
+            lightStar.setCallback(this);
+        }else {
+            String error = "lightStar drawable must set";
+            Logger.e(TAG, "--------- " + error + " -----------");
+            throw new RuntimeException(error);
+        }
+        if (a.hasValue(R.styleable.ReactiveRatingBar_darkStar)) {
+            final int drawableResId = a.getResourceId(R.styleable.ReactiveRatingBar_darkStar, -1);
+            darkStar = ContextCompat.getDrawable(getContext(), drawableResId);
+            darkStar.setCallback(this);
+        }else {
+            String error = "darkStar drawable must set";
+            Logger.e(TAG, "----------- " + error + " ---------------");
+            throw new RuntimeException(error);
+        }
+        isAutoCalculateHeight = a.getBoolean(R.styleable.ReactiveRatingBar_isAutoCalculateHeight, isAutoCalculateHeight);
+        maxStarSpace = a.getDimension(R.styleable.ReactiveRatingBar_maxStarSpace, maxStarSpace);
+        topBottomSpace = a.getDimension(R.styleable.ReactiveRatingBar_topBottomSpace, topBottomSpace);
+        starWidth = a.getDimension(R.styleable.ReactiveRatingBar_starWidth, starWidth);
+        starHeight = a.getDimension(R.styleable.ReactiveRatingBar_starHeight, starHeight);
+        rating = a.getInteger(R.styleable.ReactiveRatingBar_rating, rating);
+        numStars = a.getInteger(R.styleable.ReactiveRatingBar_numStars, numStars);
     }
 
     @Override
     @SuppressLint("RestrictedApi")
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-        int viewWidth = getWidth(), viewHeight = getHeight(), leftOrRightSpace = 0;
+        double viewWidth = getWidth(), viewHeight = getHeight(), leftOrRightSpace = 0;
         if (isAutoCalculateHeight) {
             starHeight = (int) (viewHeight - 2.0 * topBottomSpace);
             starWidth = starHeight;
             maxStarSpace = starWidth;
         }
         if (null == lightStarBitmap) {
-            Bitmap sourceBitmap = UIUtils.vectorToBitmap(getContext(), lightStarResourceId);
-            lightStarBitmap = Bitmap.createScaledBitmap(sourceBitmap, starWidth, starHeight, false);
+            lightStarBitmap = Bitmap.createScaledBitmap(((BitmapDrawable)lightStar).getBitmap(),
+                    (int)Math.floor(starWidth), (int)Math.floor(starHeight), false);
         }
         if (null == darkStarBitmap) {
-            Bitmap sourceBitmap = UIUtils.vectorToBitmap(getContext(), darkStarResourceId);
-            darkStarBitmap = Bitmap.createScaledBitmap(sourceBitmap, starWidth, starHeight, false);
+            darkStarBitmap = Bitmap.createScaledBitmap(((BitmapDrawable)darkStar).getBitmap(),
+                    (int)Math.floor(starWidth), (int)Math.floor(starHeight), false);
         }
 
-        int startSpace = (int) ((viewWidth - numStars * starWidth) / (numStars + 1.0));
+        double startSpace = (viewWidth - numStars * starWidth) / (numStars + 1.0);
         if (startSpace < maxStarSpace) {
             leftOrRightSpace = startSpace;
         } else {
             startSpace = maxStarSpace;
             leftOrRightSpace = (int) ((((viewWidth - numStars * starWidth) - ((numStars - 1) * startSpace))) / 2.0);
         }
-        int left, top = topBottomSpace;
+        float left, top = topBottomSpace;
         for (int i = 1; i <= numStars; i++) {
-            left = leftOrRightSpace + (i - 1) * (starWidth + startSpace);
+            left = (float)(leftOrRightSpace + (i - 1) * (starWidth + startSpace));
             if (i <= rating) {
                 canvas.drawBitmap(lightStarBitmap, left, top, null);
             } else {
@@ -124,8 +157,8 @@ public class ReactiveRatingBar extends View {
      * @return 0表示左侧区域，星星分数为0, -1表示无效
      */
     private int calculateStarRating(MotionEvent event) {
-        int rating = 0, viewWidth = getWidth(), leftOrRightSpace, x = (int) event.getX();
-        int startSpace = (int) ((viewWidth - numStars * starWidth) / (numStars + 1.0));
+        double rating = 0, viewWidth = getWidth(), leftOrRightSpace, x = (int) event.getX();
+        double startSpace = (int) ((viewWidth - numStars * starWidth) / (numStars + 1.0));
         if (startSpace < maxStarSpace) {
             leftOrRightSpace = startSpace;
         } else {
@@ -133,12 +166,12 @@ public class ReactiveRatingBar extends View {
             leftOrRightSpace = (int) ((((viewWidth - numStars * starWidth) - ((numStars - 1) * startSpace))) / 2.0);
         }
         if (x <= leftOrRightSpace) {
-            return rating;
+            return (int)Math.floor(rating);
         } else if (x > (viewWidth - leftOrRightSpace)) {
             rating = numStars;
-            return rating;
+            return (int)Math.floor(rating);
         }
-        int startPointStart, startPointEnd;
+        double startPointStart, startPointEnd;
         for (int i = 1; i <= numStars; i++) {
             if (i == 1) {
                 startPointStart = leftOrRightSpace;
@@ -156,7 +189,7 @@ public class ReactiveRatingBar extends View {
                 }
             }
         }
-        return rating;
+        return (int)Math.floor(rating);
     }
 
     public interface ReactiveRatingBarListener {
@@ -171,34 +204,6 @@ public class ReactiveRatingBar extends View {
         this.reactiveRatingBarListener = reactiveRatingBarListener;
     }
 
-    public int getNumStars() {
-        return numStars;
-    }
-
-    public void setNumStars(int numStars) {
-        this.numStars = numStars;
-    }
-
-    public int getMacSpace() {
-        return maxStarSpace;
-    }
-
-    public void setMacSpace(int macSpace) {
-        this.maxStarSpace = macSpace;
-    }
-
-    public int getRating() {
-        return rating;
-    }
-
-    public int getStarWidth() {
-        return starWidth;
-    }
-
-    public void setStarWidth(int starWidth) {
-        this.starWidth = starWidth;
-    }
-
     /**
      * @param rating setRating and refresh
      */
@@ -210,35 +215,7 @@ public class ReactiveRatingBar extends View {
         invalidate();
     }
 
-    public int getStarHeight() {
-        return starHeight;
-    }
-
-    public void setStarHeight(int starHeight) {
-        this.starHeight = starHeight;
-    }
-
-    public boolean isAutoCalculateHeight() {
-        return isAutoCalculateHeight;
-    }
-
-    public void setAutoCalculateHeight(boolean autoCalculateHeight) {
-        isAutoCalculateHeight = autoCalculateHeight;
-    }
-
-    public int getMaxStarSpace() {
-        return maxStarSpace;
-    }
-
-    public void setMaxStarSpace(int maxStarSpace) {
-        this.maxStarSpace = maxStarSpace;
-    }
-
-    public int getTopBottomSpace() {
-        return topBottomSpace;
-    }
-
-    public void setTopBottomSpace(int topBottomSpace) {
-        this.topBottomSpace = topBottomSpace;
+    public int getRating() {
+        return rating;
     }
 }

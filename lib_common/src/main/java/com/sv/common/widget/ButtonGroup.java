@@ -15,7 +15,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by sven-ou on 2017/1/19.
+ * 绑定一组 button 的 id
+ * android:tag="1" or "2" 单选和多选
  */
 
 public class ButtonGroup extends LinearLayout implements View.OnClickListener {
