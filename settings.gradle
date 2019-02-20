@@ -1,7 +1,8 @@
-include ':lib_theme'
-include ":lib_tts_android",
-        ":lib_android_universal_image_loader",
+include ':lib_theme' ,
+        ":lib_tts_android",
         ":lib_common",
-        ":module_security",
+        ":lib_android_universal_image_loader"
+
+include ":module_security",
         ":module_guest",
         ':module_application'
