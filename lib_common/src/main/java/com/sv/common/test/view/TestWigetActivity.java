@@ -11,6 +11,8 @@ import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.sv.common.AbstractBaseFragmentActivity;
 import com.sv.common.R;
@@ -19,6 +21,12 @@ import com.sv.common.screen_navigation.BaseMenuData;
 import com.sv.common.screen_navigation.NavigatorListener;
 import com.sv.common.test.bean.CommonTestMenuData;
 import com.sv.common.test.bean.TestMenuData;
+import com.sv.common.util.Logger;
+import com.sv.common.util.SystemUtil;
+
+import java.io.File;
+import java.util.Calendar;
+
 import butterknife.BindView;
 import butterknife.OnClick;
 
@@ -97,6 +105,10 @@ public class TestWigetActivity extends AbstractBaseFragmentActivity {
             if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
                 drawerLayout.closeDrawers();
                 return true;
+            }
+            if(SystemUtil.shouldExit(this, R.string.pressBackExit)){
+                finish();
+                System.exit(0);
             }
         }
         return false;

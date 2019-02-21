@@ -3,8 +3,29 @@ package com.sv.common.util;
 //import com.google.android.gms.common.GooglePlayServicesUtil;
 
 
+import android.content.Context;
+import android.widget.Toast;
+
+import java.util.Calendar;
+
 public class SystemUtil {
     private static final String TAG = SystemUtil.class.getName();
+
+    private static final int MIN_CLICK_DELAY_TIME = 1500;
+    private static long lastClickTime = 0;
+    public static boolean shouldExit(Context context, int tipResId){
+        long currentTime = Calendar.getInstance().getTimeInMillis();
+        if (lastClickTime == 0 || currentTime - lastClickTime > MIN_CLICK_DELAY_TIME) {
+            Logger.d(TAG, "currentTime - lastClickTime:" + (currentTime - lastClickTime));
+            lastClickTime = currentTime;
+            Toast.makeText(context, tipResId, Toast.LENGTH_SHORT).show();
+            return false;
+        } else {
+            Logger.d(TAG, "currentTime - lastClickTime:" + (currentTime - lastClickTime));
+            lastClickTime = 0;
+            return true;
+        }
+    }
 
 //    public static void openGooglePlayForApp(Activity activity, String updateUrl) {
 //        if(TextUtils.isEmpty(updateUrl)){

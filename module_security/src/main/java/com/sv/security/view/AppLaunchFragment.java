@@ -34,8 +34,7 @@ public class AppLaunchFragment extends AbstractBaseFragment {
             public void run() {
                 cancelLoadingDialog();
                 switchFragmentByMenuData(BaseMenuData.newInstance(
-                        SecurityMenuData.REGISTER_MODE.getValue(), RegisterModeFragment.class)
-                        .setAddToBackStack(false));
+                        SecurityMenuData.REGISTER_MODE.getValue(), RegisterModeFragment.class));
             }
         },250);
     }

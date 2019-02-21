@@ -1,7 +1,9 @@
 package com.tts.guest.main.view;
 
 import android.os.Bundle;
+import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
@@ -16,6 +18,7 @@ import android.widget.TextView;
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.sv.common.screen_navigation.BaseMenuData;
 import com.sv.common.screen_navigation.NavigatorListener;
+import com.sv.common.util.SystemUtil;
 import com.sv.common.widget.CycleTextView;
 import com.tts.guest.GuestAppModule;
 import com.tts.guest.R;
@@ -152,5 +155,21 @@ public class MainViewActivity extends BaseFragmentActivity implements NavigatorL
             switchFragmentByMenuData(BaseMenuData.newInstance(
                     GuestMenuData.MUSIC.getValue(), null));
         }
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            //关闭侧边栏
+            if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
+                drawerLayout.closeDrawers();
+                return true;
+            }
+            if(SystemUtil.shouldExit(this, com.sv.common.R.string.pressBackExit)){
+                finish();
+                System.exit(0);
+            }
+        }
+        return false;
     }
 }
