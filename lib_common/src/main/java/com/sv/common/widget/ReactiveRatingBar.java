@@ -1,13 +1,10 @@
 package com.sv.common.widget;
-import android.annotation.SuppressLint;
-import android.annotation.TargetApi;
+
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
-import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
-import android.os.Build;
 import android.support.v4.content.ContextCompat;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
@@ -17,15 +14,11 @@ import com.sv.common.R;
 import com.sv.common.util.Logger;
 import com.sv.common.util.UIUtils;
 
-import java.util.Map;
-
 /**
  * @author sven-ou
  */
 public class ReactiveRatingBar extends View {
     private static final String TAG = ReactiveRatingBar.class.getSimpleName();
-//    private Drawable lightStar = R.drawable.image_star_light;
-//    private Drawable darkStar = R.drawable.image_star_dark;
     private Drawable lightStar;
     private Drawable darkStar;
     /**
@@ -106,7 +99,6 @@ public class ReactiveRatingBar extends View {
     }
 
     @Override
-    @SuppressLint("RestrictedApi")
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
         double viewWidth = getWidth(), viewHeight = getHeight(), leftOrRightSpace = 0;
@@ -116,14 +108,13 @@ public class ReactiveRatingBar extends View {
             maxStarSpace = starWidth;
         }
         if (null == lightStarBitmap) {
-            lightStarBitmap = Bitmap.createScaledBitmap(((BitmapDrawable)lightStar).getBitmap(),
+            lightStarBitmap =  Bitmap.createScaledBitmap(UIUtils.getBitmapFromVectorDrawable(getContext(), lightStar),
                     (int)Math.floor(starWidth), (int)Math.floor(starHeight), false);
         }
         if (null == darkStarBitmap) {
-            darkStarBitmap = Bitmap.createScaledBitmap(((BitmapDrawable)darkStar).getBitmap(),
+            darkStarBitmap = Bitmap.createScaledBitmap(UIUtils.getBitmapFromVectorDrawable(getContext(), darkStar),
                     (int)Math.floor(starWidth), (int)Math.floor(starHeight), false);
         }
-
         double startSpace = (viewWidth - numStars * starWidth) / (numStars + 1.0);
         if (startSpace < maxStarSpace) {
             leftOrRightSpace = startSpace;
