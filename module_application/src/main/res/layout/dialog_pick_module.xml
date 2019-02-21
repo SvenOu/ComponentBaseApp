@@ -12,22 +12,28 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         style="@style/BUTTON.RECTANGLE_CORNER.BALANCED.TEXT_DARK.FONT_FAMILY_2"
+        android:layout_margin="@dimen/normal_padding_margin"
+        android:padding="@dimen/normal_padding_margin"
         android:textSize="@dimen/f7"
-        android:text="go TestWigetActivity"/>
+        android:text="go 公共通用组件"/>
 
     <Button
         android:id="@+id/btn_goMainViewActivity"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         style="@style/BUTTON.RECTANGLE_CORNER.ROYAL.TEXT_DARK.FONT_FAMILY_2"
+        android:layout_margin="@dimen/normal_padding_margin"
+        android:padding="@dimen/normal_padding_margin"
         android:textSize="@dimen/f7"
-        android:text="go MainViewActivity"/>
+        android:text="go 主界面"/>
 
     <Button
         android:id="@+id/btn_goSecurityActivity"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         style="@style/BUTTON.RECTANGLE_CORNER.ASSERTIVE.TEXT_DARK.FONT_FAMILY_2"
+        android:layout_margin="@dimen/normal_padding_margin"
+        android:padding="@dimen/normal_padding_margin"
         android:textSize="@dimen/f7"
-        android:text="go SecurityActivity"/>
+        android:text="go 安全登录界面"/>
 </LinearLayout>
