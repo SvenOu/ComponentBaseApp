@@ -1,0 +1,27 @@
+buildscript {
+    def loadPropertys = {String fileName, String propsName->
+        println "---开始加载 " + fileName +" 配置文件---"
+        Properties props = new Properties()
+        rootProject.ext.set(propsName, props)
+        def propFile = file(fileName)
+        if (propFile.canRead()) {
+            props.load(new FileInputStream(propFile))
+            for (String key : props.stringPropertyNames()) {
+                String value = props.getProperty(key);
+                println "------"  + key + ": " + value
+            }
+        } else {
+            println "---读取配置文件错误---"
+        }
+        println "---加载配置 " + fileName +" 文件完成---"
+    }
+
+    loadPropertys("build_guest.properties", "guestProps");
+    loadPropertys("build_console.properties", "consoleProps");
+}
+
+subprojects {
+    // 提供给子项目使用, 不能删
+    Properties guestProps = rootProject.ext.get("guestProps");
+    Properties consoleProps = rootProject.ext.get("consoleProps");
+}

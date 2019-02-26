@@ -1,8 +1,10 @@
-include ':lib_theme' ,
-        ":lib_tts_android",
-        ":lib_common",
-        ":lib_android_universal_image_loader"
+include ':Android_Common_lib:lib_theme' ,
+        ":Android_Common_lib:lib_tts_android",
+        ":Android_Common_lib:lib_common",
+        ":Android_Common_lib:lib_android_universal_image_loader"
 
-include ":module_security",
-        ":module_guest",
-        ':module_application'
+include ':Project_lib:lib_zxing_android_embedded'
+
+include ":Project_Module:module_security",
+        ":Project_Module:module_guest",
+        ':Project_Module:module_application'

@@ -1,0 +1,109 @@
+apply plugin: 'com.android.library'
+
+dependencies {
+    api fileTree(include: ['*.jar'], dir: 'libs')
+    api project(':Android_Common_lib:lib_common')
+}
+
+android {
+    println "---开始加载module_guest配置文件---"
+    def fileProvide = guestProps['app.FACEBOOK_APP_ID']+guestProps['app.FILE_PROVIDE']
+    def testManifestPlaceholders = [
+            UMENG_APP_KEY   : guestProps['app.UMENG_APP_KEY'],
+            UMENG_CHANNEL   : guestProps['app.UMENG_CHANNEL'],
+            FACEBOOK_APP_ID : guestProps['app.FACEBOOK_APP_ID'],
+            FABRIC_APIKEY   : guestProps['app.FABRIC_APIKEY'],
+            //for test
+            GETUI_APP_ID    : guestProps['app.TEST_GETUI_APP_ID'],
+            GETUI_APP_KEY   : guestProps['app.TEST_GETUI_APP_KEY'],
+            GETUI_APP_SECRET: guestProps['app.TEST_GETUI_APP_SECRET'],
+
+            PACKAGE_NAME    : guestProps['app.PACKAGE_NAME'],
+            FILE_PROVIDE    : fileProvide
+    ]
+    def proManifestPlaceholders = [
+            UMENG_APP_KEY   : guestProps['app.UMENG_APP_KEY'],
+            UMENG_CHANNEL   : guestProps['app.UMENG_CHANNEL'],
+            FACEBOOK_APP_ID : guestProps['app.FACEBOOK_APP_ID'],
+            FABRIC_APIKEY   : guestProps['app.FABRIC_APIKEY'],
+            //for pro
+            GETUI_APP_ID    : guestProps['app.PRO_GETUI_APP_ID'],
+            GETUI_APP_KEY   : guestProps['app.PRO_GETUI_APP_KEY'],
+            GETUI_APP_SECRET: guestProps['app.PRO_GETUI_APP_SECRET'],
+
+            PACKAGE_NAME    : guestProps['app.PACKAGE_NAME'],
+            FILE_PROVIDE    : fileProvide
+    ]
+    def localManifestPlaceholders = [
+            UMENG_APP_KEY   : guestProps['app.UMENG_APP_KEY'],
+            UMENG_CHANNEL   : guestProps['app.UMENG_CHANNEL'],
+            FACEBOOK_APP_ID : guestProps['app.FACEBOOK_APP_ID'],
+            FABRIC_APIKEY   : guestProps['app.FABRIC_APIKEY'],
+            //for dev
+            GETUI_APP_ID    : guestProps['app.DEV_GETUI_APP_ID'],
+            GETUI_APP_KEY   : guestProps['app.DEV_GETUI_APP_KEY'],
+            GETUI_APP_SECRET: guestProps['app.DEV_GETUI_APP_SECRET'],
+
+            PACKAGE_NAME    : guestProps['app.PACKAGE_NAME'],
+            FILE_PROVIDE    : fileProvide
+    ]
+
+    compileSdkVersion "${buildVars.compileSdkVersion}".toInteger()
+    buildToolsVersion "${buildVars.buildToolsVersion}"
+    useLibrary 'org.apache.http.legacy'
+    defaultConfig {
+        versionCode 1
+        versionName "1.0"
+        minSdkVersion "${buildVars.minSdkVersion}".toInteger()
+        targetSdkVersion "${buildVars.targetSdkVersion}".toInteger()
+
+        //AndroidManifext.xml中的占位符的值，使用：android:value="${UMENG_APP_KEY}"
+        if (guestProps['app.currentMode'] == guestProps['app.TEST_MODE']) {
+            println "-------------------- " + guestProps['app.TEST_MODE'] + "---------------------------"
+            manifestPlaceholders = testManifestPlaceholders
+            println "----------------GETUI_APP_ID---------" + guestProps['app.TEST_GETUI_APP_ID'] + "------------------"
+            println "----------------GETUI_APP_KEY---------" + guestProps['app.TEST_GETUI_APP_KEY'] + "------------------"
+            println "----------------GETUI_APP_SECRET---------" + guestProps['app.TEST_GETUI_APP_SECRET'] + "------------------"
+
+        } else if (guestProps['app.currentMode'] == guestProps['app.PROD_MODE']) {
+            println "-------------------- " + guestProps['app.PROD_MODE'] + "---------------------------"
+            manifestPlaceholders = proManifestPlaceholders
+            println "----------------GETUI_APP_ID---------" + guestProps['app.PRO_GETUI_APP_ID'] + "------------------"
+            println "----------------GETUI_APP_KEY---------" + guestProps['app.PRO_GETUI_APP_KEY'] + "------------------"
+            println "----------------GETUI_APP_SECRET---------" + guestProps['app.PRO_GETUI_APP_SECRET'] + "------------------"
+
+        } else {
+            println "-------------------- " + guestProps['app.DEV_MODE'] + "---------------------------"
+            manifestPlaceholders = localManifestPlaceholders
+            println "----------------GETUI_APP_ID---------" + guestProps['app.DEV_GETUI_APP_ID'] + "------------------"
+            println "----------------GETUI_APP_KEY---------" + guestProps['app.DEV_GETUI_APP_KEY'] + "------------------"
+            println "----------------GETUI_APP_SECRET---------" + guestProps['app.DEV_GETUI_APP_SECRET'] + "------------------"
+        }
+
+        //Java代码中用BuildConfig.GOOGLE_MAP_APP_ID 调用key的值
+        buildConfigField 'String', 'GOOGLE_MAP_APP_ID', guestProps['app.GOOGLE_MAP_APP_ID']
+        //GCM Config sender id.
+//        buildConfigField 'String', 'GCM_SENDER_ID', '"145857549498"'
+
+        buildConfigField 'String', 'CURRENT_MODE', guestProps['app.currentMode']
+        buildConfigField 'String', 'DEV_MODE', guestProps['app.DEV_MODE']
+        buildConfigField 'String', 'TEST_MODE', guestProps['app.TEST_MODE']
+        buildConfigField 'String', 'PROD_MODE', guestProps['app.PROD_MODE']
+        buildConfigField 'Boolean', 'PRINT_LOG', guestProps['app.PRINT_LOG']
+        buildConfigField 'String', 'DATA_BASE_NAME', '"'+guestProps['app.DATA_BASE_NAME']+'"'
+        buildConfigField 'String', 'FILE_PROVIDE', '"'+fileProvide+'"'
+        buildConfigField 'String', 'AVATAR_CLIENT_ID', guestProps['app.AVATAR_CLIENT_ID']
+        buildConfigField 'String', 'AVATAR_PASSWORD', guestProps['app.AVATAR_PASSWORD']
+        buildConfigField 'String', 'FACEBOOK_APP_ID_JAVA', '"'+guestProps['app.FACEBOOK_APP_ID']+'"'
+
+        generatedDensities = []//for vector
+        vectorDrawables.useSupportLibrary = true
+
+//        ndk {
+//            abiFilters "armeabi", "armeabi-v7a", "arm64-v8a", "mips", "mips64", "x86", "x86_64"
+//        }
+    }
+
+}
+
+
