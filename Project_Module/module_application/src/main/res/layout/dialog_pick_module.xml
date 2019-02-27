@@ -12,8 +12,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         style="@style/BUTTON.RECTANGLE_CORNER.BALANCED.TEXT_DARK.FONT_FAMILY_2"
-        android:layout_margin="@dimen/normal_padding_margin"
-        android:padding="@dimen/normal_padding_margin"
         android:textSize="@dimen/f7"
         android:text="go 公共通用组件"/>
 
@@ -22,8 +20,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         style="@style/BUTTON.RECTANGLE_CORNER.ROYAL.TEXT_DARK.FONT_FAMILY_2"
-        android:layout_margin="@dimen/normal_padding_margin"
-        android:padding="@dimen/normal_padding_margin"
         android:textSize="@dimen/f7"
         android:text="go 主界面"/>
 
@@ -32,8 +28,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         style="@style/BUTTON.RECTANGLE_CORNER.ASSERTIVE.TEXT_DARK.FONT_FAMILY_2"
-        android:layout_margin="@dimen/normal_padding_margin"
-        android:padding="@dimen/normal_padding_margin"
         android:textSize="@dimen/f7"
         android:text="go 安全登录界面"/>
 </LinearLayout>
