@@ -1,5 +1,6 @@
 include ':Android_Common_lib:lib_theme' ,
         ":Android_Common_lib:lib_tts_android",
+        ":Android_Common_lib:lib_app_file_manager",
         ":Android_Common_lib:lib_common",
         ":Android_Common_lib:lib_android_universal_image_loader"
 

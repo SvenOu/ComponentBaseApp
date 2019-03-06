@@ -14,6 +14,7 @@ import com.sv.integrated.R;
 public class PickModuleDialog extends Dialog implements View.OnClickListener {
     private static final String TAG = PickModuleDialog.class.getSimpleName();
 
+    private Button btnGoAndroidFileServer;
     private Button btnGoTestWigetActivity;
     private Button btnGoMainViewActivity;
     private Button btnGoSecurityActivity;
@@ -33,10 +34,12 @@ public class PickModuleDialog extends Dialog implements View.OnClickListener {
         setCanceledOnTouchOutside(false);
         setContentView(R.layout.dialog_pick_module);
 
+        btnGoAndroidFileServer = findViewById(R.id.btn_goAndroidFileServer);
         btnGoTestWigetActivity = findViewById(R.id.btn_goTestWigetActivity);
         btnGoMainViewActivity = findViewById(R.id.btn_goMainViewActivity);
         btnGoSecurityActivity = findViewById(R.id.btn_goSecurityActivity);
 
+        btnGoAndroidFileServer.setOnClickListener(this);
         btnGoTestWigetActivity.setOnClickListener(this);
         btnGoMainViewActivity.setOnClickListener(this);
         btnGoSecurityActivity.setOnClickListener(this);

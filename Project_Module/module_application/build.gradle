@@ -6,6 +6,10 @@ dependencies {
     api project(':Project_Module:module_guest')
     api project(':Project_lib:lib_zxing_android_embedded')
     api "${androidSupportConstraintLayout}"
+
+    if(guestProps['app.aRouterDebugMode'].toBoolean()){
+        api project(':Android_Common_lib:lib_app_file_manager')
+    }
 }
 android {
     println "---开始加载module_application配置文件---"

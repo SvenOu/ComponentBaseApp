@@ -8,6 +8,14 @@
               tools:ignore="MissingDefaultResource">
 
     <Button
+        android:id="@+id/btn_goAndroidFileServer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/BUTTON.RECTANGLE_CORNER.ENERGIZED.TEXT_DARK.FONT_FAMILY_2"
+        android:textSize="@dimen/f7"
+        android:text="go Android文件服务器"/>
+
+    <Button
         android:id="@+id/btn_goTestWigetActivity"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
