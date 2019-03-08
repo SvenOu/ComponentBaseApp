@@ -40,7 +40,7 @@ public class ShellActivity extends AppCompatActivity implements PickModuleDialog
             ARouter.getInstance().build("/module_security/view/SecurityActivity").navigation();
         }else if(btnId == R.id.btn_goAndroidFileServer){
             ARouter.getInstance().build("/lib_app_file_manager/appfile/WebServerActivity")
-                    .withString("applicatonId", BuildConfig.APPLICATION_ID)
+                    .withString("applicationId", BuildConfig.APPLICATION_ID)
 //                    .withInt("serverPort", getRandomNumberInRange(8000, 8999))
                     .navigation();
             return;
