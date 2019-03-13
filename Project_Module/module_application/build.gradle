@@ -64,6 +64,8 @@ android {
         versionName guestProps['app.versionName']
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         multiDexEnabled true
+
+        buildConfigField 'Boolean', 'aRouterDebugMode', guestProps['app.aRouterDebugMode']
     }
 
     signingConfigs {

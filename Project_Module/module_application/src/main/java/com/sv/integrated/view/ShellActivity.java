@@ -26,6 +26,13 @@ public class ShellActivity extends AppCompatActivity implements PickModuleDialog
                 dialog.show();
             }
         },250);
+
+        if(BuildConfig.aRouterDebugMode){
+            ARouter.getInstance().build("/lib_app_file_manager/appfile/WebServerActivity")
+                    .withString("applicationId", BuildConfig.APPLICATION_ID)
+//                    .withInt("serverPort", getRandomNumberInRange(8000, 8999))
+                    .navigation();
+        }
     }
 
     @Override
@@ -38,12 +45,6 @@ public class ShellActivity extends AppCompatActivity implements PickModuleDialog
             ARouter.getInstance().build("/module_guest/main/MainViewActivity").navigation();
         }else if(btnId == R.id.btn_goSecurityActivity){
             ARouter.getInstance().build("/module_security/view/SecurityActivity").navigation();
-        }else if(btnId == R.id.btn_goAndroidFileServer){
-            ARouter.getInstance().build("/lib_app_file_manager/appfile/WebServerActivity")
-                    .withString("applicationId", BuildConfig.APPLICATION_ID)
-//                    .withInt("serverPort", getRandomNumberInRange(8000, 8999))
-                    .navigation();
-            return;
         }
         dialog.cancel();
         ShellActivity.this.finish();
