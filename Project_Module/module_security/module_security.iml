@@ -89,6 +89,7 @@
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/aapt_friendly_merged_manifests" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/annotation_processor_list" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/check-manifest" />
+      <excludeFolder url="file://$MODULE_DIR$/build/intermediates/data_binding_layout_info_type_package" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/incremental" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/intermediate-jars" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/javac" />
@@ -174,6 +175,10 @@
     <orderEntry type="library" name="Gradle: com.android.support:multidex:1.0.3@aar" level="project" />
     <orderEntry type="library" name="Gradle: org.springframework.android:spring-android-core:2.0.0.M4@jar" level="project" />
     <orderEntry type="library" name="Gradle: com.android.support:support-media-compat:25.2.0@aar" level="project" />
+    <orderEntry type="module" module-name="lib_android_universal_image_loader" />
+    <orderEntry type="module" module-name="lib_common" />
+    <orderEntry type="module" module-name="lib_theme" />
+    <orderEntry type="module" module-name="lib_tts_android" />
     <orderEntry type="module" module-name="lib_android_universal_image_loader" />
     <orderEntry type="module" module-name="lib_common" />
     <orderEntry type="module" module-name="lib_theme" />
