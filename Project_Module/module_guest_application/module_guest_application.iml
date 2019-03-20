@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<module external.linked.project.id=":Project_Module:module_application" external.linked.project.path="$MODULE_DIR$" external.root.project.path="$MODULE_DIR$/../.." external.system.id="GRADLE" type="JAVA_MODULE" version="4">
+<module external.linked.project.id=":Project_Module:module_guest_application" external.linked.project.path="$MODULE_DIR$" external.root.project.path="$MODULE_DIR$/../.." external.system.id="GRADLE" type="JAVA_MODULE" version="4">
   <component name="FacetManager">
     <facet type="android-gradle" name="Android-Gradle">
       <configuration>
-        <option name="GRADLE_PROJECT_PATH" value=":Project_Module:module_application" />
+        <option name="GRADLE_PROJECT_PATH" value=":Project_Module:module_guest_application" />
       </configuration>
     </facet>
     <facet type="android" name="Android">
@@ -69,13 +69,6 @@
       <sourceFolder url="file://$MODULE_DIR$/src/CURRENT_SELECT/java" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/CURRENT_SELECT/rs" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/CURRENT_SELECT/shaders" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/testCURRENT_SELECT/res" type="java-test-resource" />
-      <sourceFolder url="file://$MODULE_DIR$/src/testCURRENT_SELECT/resources" type="java-test-resource" />
-      <sourceFolder url="file://$MODULE_DIR$/src/testCURRENT_SELECT/assets" type="java-test-resource" />
-      <sourceFolder url="file://$MODULE_DIR$/src/testCURRENT_SELECT/aidl" isTestSource="true" />
-      <sourceFolder url="file://$MODULE_DIR$/src/testCURRENT_SELECT/java" isTestSource="true" />
-      <sourceFolder url="file://$MODULE_DIR$/src/testCURRENT_SELECT/rs" isTestSource="true" />
-      <sourceFolder url="file://$MODULE_DIR$/src/testCURRENT_SELECT/shaders" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/src/androidTestCURRENT_SELECT/res" type="java-test-resource" />
       <sourceFolder url="file://$MODULE_DIR$/src/androidTestCURRENT_SELECT/resources" type="java-test-resource" />
       <sourceFolder url="file://$MODULE_DIR$/src/androidTestCURRENT_SELECT/assets" type="java-test-resource" />
@@ -83,6 +76,13 @@
       <sourceFolder url="file://$MODULE_DIR$/src/androidTestCURRENT_SELECT/java" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/src/androidTestCURRENT_SELECT/rs" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/src/androidTestCURRENT_SELECT/shaders" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/src/testCURRENT_SELECT/res" type="java-test-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/src/testCURRENT_SELECT/resources" type="java-test-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/src/testCURRENT_SELECT/assets" type="java-test-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/src/testCURRENT_SELECT/aidl" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/src/testCURRENT_SELECT/java" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/src/testCURRENT_SELECT/rs" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/src/testCURRENT_SELECT/shaders" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/src/debug/res" type="java-resource" />
       <sourceFolder url="file://$MODULE_DIR$/src/debug/resources" type="java-resource" />
       <sourceFolder url="file://$MODULE_DIR$/src/debug/assets" type="java-resource" />
@@ -131,7 +131,6 @@
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/apk_list" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/blame" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/build-info" />
-      <excludeFolder url="file://$MODULE_DIR$/build/intermediates/builds" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/check-libraries" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/check-manifest" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/checkCURRENT_SELECTDebugClasspath" />

@@ -9,4 +9,4 @@ include ':Project_lib:lib_zxing_android_embedded'
 
 include ":Project_Module:module_security",
         ":Project_Module:module_guest",
-        ':Project_Module:module_application'
+        ':Project_Module:module_guest_application'
