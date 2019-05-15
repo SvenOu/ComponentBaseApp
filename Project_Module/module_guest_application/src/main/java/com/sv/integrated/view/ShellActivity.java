@@ -18,14 +18,17 @@ public class ShellActivity extends AppCompatActivity implements PickModuleDialog
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.act_shell);
-        dialog = new PickModuleDialog(this);
-        dialog.setPickModuleListener(this);
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                dialog.show();
-            }
-        },250);
+
+        if(null == dialog){
+            dialog = new PickModuleDialog(this);
+            dialog.setPickModuleListener(this);
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    dialog.show();
+                }
+            },250);
+        }
 
         if(BuildConfig.aRouterDebugMode){
             ARouter.getInstance().build("/lib_app_file_manager/appfile/WebServerActivity")
@@ -56,5 +59,13 @@ public class ShellActivity extends AppCompatActivity implements PickModuleDialog
         }
         Random r = new Random();
         return r.nextInt((max - min) + 1) + min;
+    }
+
+    @Override
+    protected void onDestroy() {
+        if(dialog != null){
+            dialog.dismiss();
+        }
+        super.onDestroy();
     }
 }
