@@ -37,6 +37,10 @@ buildscript {
         arouterApi = 'com.alibaba:arouter-api:1.4.1'
         arouterCompiler = 'com.alibaba:arouter-compiler:1.2.2'
 
+        //卡顿收集
+        blockcanary = 'com.github.moduth:blockcanary:1.0.1'
+        blockcanaryNoOp = 'com.github.moduth:blockcanary-no-op:1.0.1'
+
         //新版FaceBook SDk需要
         boltsAndroid = 'com.parse.bolts:bolts-android:1.2.1'
     }
