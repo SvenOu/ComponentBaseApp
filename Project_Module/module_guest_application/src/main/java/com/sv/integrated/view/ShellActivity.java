@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.TextView;
 
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.sv.integrated.BuildConfig;
@@ -14,10 +15,12 @@ import java.util.Random;
 
 public class ShellActivity extends AppCompatActivity implements PickModuleDialog.PickModuleListener {
     private PickModuleDialog dialog;
+    private TextView tvLoading;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.act_shell);
+        tvLoading = findViewById(R.id.tv_loading);
 
         if(null == dialog){
             dialog = new PickModuleDialog(this);
@@ -26,6 +29,7 @@ public class ShellActivity extends AppCompatActivity implements PickModuleDialog
                 @Override
                 public void run() {
                     dialog.show();
+                    tvLoading.setVisibility(View.INVISIBLE);
                 }
             },250);
         }
