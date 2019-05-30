@@ -1,16 +1,19 @@
 package com.sv.integrated.view;
 
-import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ProgressBar;
-import android.widget.TextView;
 
 import com.alibaba.android.arouter.launcher.ARouter;
+import com.sv.common.init.FinishInitEvent;
 import com.sv.integrated.BuildConfig;
 import com.sv.integrated.R;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.Random;
 
@@ -20,9 +23,17 @@ public class ShellActivity extends AppCompatActivity implements PickModuleDialog
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        EventBus.getDefault().register(this);
         setContentView(R.layout.act_shell);
-        pbLoading = findViewById(R.id.pb_loading);
+    }
 
+    /**
+     * {@link com.sv.common.init.InitializeIntentService} 初始化完成之后触发此事件
+     * @param event 事件参数
+     */
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onFinishInitEvent(FinishInitEvent event) {
+        pbLoading = findViewById(R.id.pb_loading);
         if(null == dialog){
             dialog = new PickModuleDialog(this);
             dialog.setPickModuleListener(this);
@@ -35,13 +46,13 @@ public class ShellActivity extends AppCompatActivity implements PickModuleDialog
             },250);
         }
 
-        if(BuildConfig.aRouterDebugMode){
+         if(BuildConfig.aRouterDebugMode){
             ARouter.getInstance().build("/lib_app_file_manager/appfile/WebServerActivity")
                     .withString("applicationId", BuildConfig.APPLICATION_ID)
 //                    .withInt("serverPort", getRandomNumberInRange(8000, 8999))
                     .navigation();
         }
-    }
+    };
 
     @Override
     public void onButtonsClick(View v) {
@@ -68,6 +79,7 @@ public class ShellActivity extends AppCompatActivity implements PickModuleDialog
 
     @Override
     protected void onDestroy() {
+        EventBus.getDefault().unregister(this);
         if(dialog != null){
             dialog.dismiss();
         }

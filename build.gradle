@@ -30,6 +30,7 @@ buildscript {
         jacksonDatabind = 'com.fasterxml.jackson.core:jackson-databind:2.9.7'
         androidRestTemplate = 'org.springframework.android:spring-android-rest-template:2.0.0.M4'
         zip4j = 'net.lingala.zip4j:zip4j:1.3.2'
+        eventbus = 'org.greenrobot:eventbus:3.1.1'
 
         butterknife = 'com.jakewharton:butterknife:9.0.0'
         butterknifCompiler = 'com.jakewharton:butterknife-compiler:9.0.0'

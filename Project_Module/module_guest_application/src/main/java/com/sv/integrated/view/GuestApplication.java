@@ -13,7 +13,7 @@ public class GuestApplication extends CommonApplication {
     }
 
     @Override
-    protected boolean isDebugMode() {
+    public boolean isDebugMode() {
         return BuildConfig.aRouterDebugMode;
     }
 
