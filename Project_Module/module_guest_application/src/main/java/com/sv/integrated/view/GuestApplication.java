@@ -8,8 +8,9 @@ import com.sv.integrated.BuildConfig;
 public class GuestApplication extends CommonApplication {
     @Override
     public void onCreate() {
-        super.onCreate();
         initBlockCanary();
+        super.onCreate();
+
     }
 
     @Override
