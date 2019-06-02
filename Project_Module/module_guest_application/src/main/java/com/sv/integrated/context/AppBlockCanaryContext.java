@@ -35,7 +35,7 @@ public class AppBlockCanaryContext extends BlockCanaryContext {
 
     @Override
     public int getConfigBlockThreshold() {
-        return 4000;
+        return 5000;
     }
 
     // if set true, notification will be shown, else only write log file
