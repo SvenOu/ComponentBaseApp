@@ -108,6 +108,8 @@ subprojects {
                         }
                     }
                     buildConfigField 'String', 'MODULE_NAME', '\"'+ project.name + '\"'
+                    vectorDrawables.useSupportLibrary = true
+//                    generatedDensities = []//for vector
                 }
                 packagingOptions {
                     exclude 'META-INF/notice.txt'
@@ -118,13 +120,15 @@ subprojects {
                     sourceCompatibility JavaVersion.VERSION_1_8
                     targetCompatibility JavaVersion.VERSION_1_8
                 }
-                // This is handled for you by the 2.0+ Gradle Plugin
-                aaptOptions {
-                    additionalParameters "--no-version-vectors"
-                }
+
                 dexOptions {
                     javaMaxHeapSize "8g"
                 }
+
+                // This is handled for you by the 2.0+ Gradle Plugin
+//                aaptOptions {
+//                    additionalParameters "--no-version-vectors"
+//                }
             }
             dependencies {
                 //butterknife

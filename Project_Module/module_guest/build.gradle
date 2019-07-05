@@ -96,8 +96,6 @@ android {
         buildConfigField 'String', 'AVATAR_PASSWORD', guestProps['app.AVATAR_PASSWORD']
         buildConfigField 'String', 'FACEBOOK_APP_ID_JAVA', '"'+guestProps['app.FACEBOOK_APP_ID']+'"'
 
-        generatedDensities = []//for vector
-        vectorDrawables.useSupportLibrary = true
 
 //        ndk {
 //            abiFilters "armeabi", "armeabi-v7a", "arm64-v8a", "mips", "mips64", "x86", "x86_64"
